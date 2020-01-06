@@ -97,6 +97,7 @@
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add Transaction";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnBudget
             // 
@@ -106,6 +107,7 @@
             this.btnBudget.TabIndex = 7;
             this.btnBudget.Text = "Adjust budget";
             this.btnBudget.UseVisualStyleBackColor = true;
+            this.btnBudget.Click += new System.EventHandler(this.btnBudget_Click);
             // 
             // btnPeriod
             // 

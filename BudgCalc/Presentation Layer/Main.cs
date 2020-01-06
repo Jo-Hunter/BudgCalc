@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgCalc.Presentation_Layer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,21 @@ namespace BudgCalc
         public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void btnBudget_Click(object sender, EventArgs e)
+        {
+            frmBudget bud = new frmBudget();
+            bud.ShowDialog();
+            this.Hide();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmSummary sum = new frmSummary();
+            sum.ShowDialog();
+
+            // and will later do business.
         }
     }
 }
