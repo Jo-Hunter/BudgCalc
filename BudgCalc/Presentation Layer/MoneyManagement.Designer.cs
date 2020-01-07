@@ -47,6 +47,7 @@
             this.lvBudget.Size = new System.Drawing.Size(517, 280);
             this.lvBudget.TabIndex = 0;
             this.lvBudget.UseCompatibleStateImageBehavior = false;
+            this.lvBudget.View = System.Windows.Forms.View.Details;
             // 
             // lbtlTotalBudget
             // 

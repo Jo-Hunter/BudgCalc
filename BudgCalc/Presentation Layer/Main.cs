@@ -40,5 +40,10 @@ namespace BudgCalc
 
             // and will later do business.
         }
+
+        private void lblSpendAccount_Click(object sender, EventArgs e)
+        {
+            // this needs to be dynamic to whether they checked spent or earned
+        }
     }
 }
