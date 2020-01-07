@@ -19,15 +19,24 @@ namespace BudgCalc
 
         private void btnBudget_Click(object sender, EventArgs e)
         {
-            frmBudget bud = new frmBudget();
+            frmManager bud = new frmManager();
+            //this.Hide();
             bud.ShowDialog();
-            this.Hide();
+            
+
+            //this.ShowDialog();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmSummary sum = new frmSummary();
-            sum.ShowDialog();
+            
+
+            sum.Show();
+            
+
+
+            
 
             // and will later do business.
         }

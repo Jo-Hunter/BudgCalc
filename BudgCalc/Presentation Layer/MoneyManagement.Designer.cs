@@ -1,6 +1,6 @@
 ﻿namespace BudgCalc.Presentation_Layer
 {
-    partial class frmBudget
+    partial class frmManager
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.lvBudget = new System.Windows.Forms.ListView();
             this.lbtlTotalBudget = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAddM = new System.Windows.Forms.Button();
+            this.btnCancelM = new System.Windows.Forms.Button();
+            this.btnDeleteM = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bankingDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bankMoneyStartsFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.budgetCategoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,32 +57,33 @@
             this.lbtlTotalBudget.TabIndex = 1;
             this.lbtlTotalBudget.Text = "Budget Total is: $";
             // 
-            // btnAdd
+            // btnAddM
             // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 357);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(148, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAddM.Location = new System.Drawing.Point(12, 357);
+            this.btnAddM.Name = "btnAddM";
+            this.btnAddM.Size = new System.Drawing.Size(148, 23);
+            this.btnAddM.TabIndex = 2;
+            this.btnAddM.Text = "Edit";
+            this.btnAddM.UseVisualStyleBackColor = true;
             // 
-            // btnCancel
+            // btnCancelM
             // 
-            this.btnCancel.Location = new System.Drawing.Point(369, 357);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(161, 23);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancelM.Location = new System.Drawing.Point(369, 357);
+            this.btnCancelM.Name = "btnCancelM";
+            this.btnCancelM.Size = new System.Drawing.Size(161, 23);
+            this.btnCancelM.TabIndex = 3;
+            this.btnCancelM.Text = "Cancel";
+            this.btnCancelM.UseVisualStyleBackColor = true;
+            this.btnCancelM.Click += new System.EventHandler(this.btnCancelM_Click);
             // 
-            // btnDelete
+            // btnDeleteM
             // 
-            this.btnDelete.Location = new System.Drawing.Point(198, 357);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(138, 23);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDeleteM.Location = new System.Drawing.Point(198, 357);
+            this.btnDeleteM.Name = "btnDeleteM";
+            this.btnDeleteM.Size = new System.Drawing.Size(138, 23);
+            this.btnDeleteM.TabIndex = 4;
+            this.btnDeleteM.Text = "Delete";
+            this.btnDeleteM.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -97,38 +98,39 @@
             // bankingDetailsToolStripMenuItem
             // 
             this.bankingDetailsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bankToolStripMenuItem,
-            this.bankMoneyStartsFromToolStripMenuItem});
+            this.bankMoneyStartsFromToolStripMenuItem,
+            this.budgetCategoriesToolStripMenuItem});
             this.bankingDetailsToolStripMenuItem.Name = "bankingDetailsToolStripMenuItem";
             this.bankingDetailsToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.bankingDetailsToolStripMenuItem.Text = "Banking Details";
             // 
-            // bankToolStripMenuItem
-            // 
-            this.bankToolStripMenuItem.Name = "bankToolStripMenuItem";
-            this.bankToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.bankToolStripMenuItem.Text = "Bank";
-            // 
             // bankMoneyStartsFromToolStripMenuItem
             // 
             this.bankMoneyStartsFromToolStripMenuItem.Name = "bankMoneyStartsFromToolStripMenuItem";
-            this.bankMoneyStartsFromToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.bankMoneyStartsFromToolStripMenuItem.Text = "Money Held in";
+            this.bankMoneyStartsFromToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.bankMoneyStartsFromToolStripMenuItem.Text = "Money Sources";
             this.bankMoneyStartsFromToolStripMenuItem.Click += new System.EventHandler(this.bankMoneyStartsFromToolStripMenuItem_Click);
             // 
-            // frmBudget
+            // budgetCategoriesToolStripMenuItem
+            // 
+            this.budgetCategoriesToolStripMenuItem.Name = "budgetCategoriesToolStripMenuItem";
+            this.budgetCategoriesToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.budgetCategoriesToolStripMenuItem.Text = "Budget categories";
+            this.budgetCategoriesToolStripMenuItem.Click += new System.EventHandler(this.budgetCategoriesToolStripMenuItem_Click);
+            // 
+            // frmManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 399);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnDeleteM);
+            this.Controls.Add(this.btnCancelM);
+            this.Controls.Add(this.btnAddM);
             this.Controls.Add(this.lbtlTotalBudget);
             this.Controls.Add(this.lvBudget);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmBudget";
+            this.Name = "frmManager";
             this.Text = "MoneyManagement";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -141,12 +143,12 @@
 
         private System.Windows.Forms.ListView lvBudget;
         private System.Windows.Forms.Label lbtlTotalBudget;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAddM;
+        private System.Windows.Forms.Button btnCancelM;
+        private System.Windows.Forms.Button btnDeleteM;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem bankingDetailsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bankToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bankMoneyStartsFromToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem budgetCategoriesToolStripMenuItem;
     }
 }
