@@ -161,6 +161,7 @@
             this.Controls.Add(this.cbCategory);
             this.Name = "frmMain";
             this.Text = "Budget Calculator";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
