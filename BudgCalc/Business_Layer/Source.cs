@@ -14,7 +14,7 @@ namespace BudgCalc.Business_Layer
         public int SourceID
         {
             get { return sourceid; }
-            set { sourceid = value; };
+            set { sourceid = value; }
 
         }
 

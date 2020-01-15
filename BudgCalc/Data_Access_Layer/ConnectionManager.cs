@@ -16,6 +16,7 @@ namespace BudgCalc.Data_Access_Layer
             // Make a connection to the specific database.
             string connection = "Data Source=JOCELYN\\SQLEXPRESS;Initial Catalog=BudgetCalculator;User ID=sa;Password=sqlexpress";
             SqlConnection conn = new SqlConnection(connection);
+            
             return conn;
         }
     }

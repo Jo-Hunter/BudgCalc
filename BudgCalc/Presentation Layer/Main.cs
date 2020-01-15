@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using BudgCalc.Data_Access_Layer;
+using BudgCalc.Business_Layer;
 
 namespace BudgCalc
 {
@@ -50,11 +51,11 @@ namespace BudgCalc
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            prefillCategory();
-            prefillSource();
+            PrefillCategoryCB();
+            PrefillSource();
         }
 
-        public void prefillCategory()
+        public void PrefillCategoryCB()
         {
             string query = "select * from Categories";
 
@@ -62,12 +63,24 @@ namespace BudgCalc
 
             try
             {
+                
                 SqlCommand cmd = new SqlCommand(query, conn);
                 conn.Open();
+                
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
+                    
+                    Category cat = new Category()
+                    {
+                        //CategoryID = sdr["CategoryID"].ToString(), // cast not correct
+                        CategoryName = sdr["CategoryName"].ToString()
+                    };
+                    //cat.Amount = sdr.["AssignedAmount"].ToString();
+                    //cat.Description = sdr.["CategoryDescription"];
+                    //cat.SourceID = sdr.["SourceID"].toString();
 
+                    cbCategory.Items.Add(cat.CategoryName);
                 }
                 if (sdr!=null)
                 {
@@ -81,7 +94,7 @@ namespace BudgCalc
             }
         }
 
-        public void prefillSource()
+        public void PrefillSource()
         {
             string query = "select * from Sources";
 
