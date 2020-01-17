@@ -57,20 +57,21 @@ namespace BudgCalc
 
         public void PrefillCategoryCB()
         {
-            string query = "select * from Categories";
+            string query = "SELECT * FROM Categories";
 
             SqlConnection conn = ConnectionManager.DatabaseConnection();
 
             try
             {
-                
+               
                 SqlCommand cmd = new SqlCommand(query, conn);
                 conn.Open();
                 
                 SqlDataReader sdr = cmd.ExecuteReader();
+                
                 while (sdr.Read())
                 {
-                    
+                    MessageBox.Show("this is reading the sdr");
                     Category cat = new Category()
                     {
                         //CategoryID = sdr["CategoryID"].ToString(), // cast not correct
@@ -82,10 +83,12 @@ namespace BudgCalc
 
                     cbCategory.Items.Add(cat.CategoryName);
                 }
+                
                 if (sdr!=null)
                 {
                     sdr.Close();
                 }
+                MessageBox.Show("this is trying the thing after while");
                 conn.Close();
             }
             catch (Exception ex)
@@ -106,7 +109,10 @@ namespace BudgCalc
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
+                    Source source = new Source();
+                    source.SourceName = sdr["SourceName"].ToString();
 
+                    cbAccount.Items.Add(source.SourceName);
                 }
                 if (sdr != null)
                 {
