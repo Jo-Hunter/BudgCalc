@@ -71,7 +71,7 @@ namespace BudgCalc
                 
                 while (sdr.Read())
                 {
-                    MessageBox.Show("this is reading the sdr");
+                    //MessageBox.Show("this is reading the sdr");
                     Category cat = new Category()
                     {
                         //CategoryID = sdr["CategoryID"].ToString(), // cast not correct
@@ -88,7 +88,7 @@ namespace BudgCalc
                 {
                     sdr.Close();
                 }
-                MessageBox.Show("this is trying the thing after while");
+                //MessageBox.Show("this is trying the thing after while");
                 conn.Close();
             }
             catch (Exception ex)
