@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.lblInstruction = new System.Windows.Forms.Label();
+            this.lblGV = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblInstruction
@@ -41,14 +42,24 @@
             this.lblInstruction.Text = "This is where you can see the ongoing amount that should pop up every time you hi" +
     "t transaction";
             // 
+            // lblGV
+            // 
+            this.lblGV.AutoSize = true;
+            this.lblGV.Location = new System.Drawing.Point(51, 92);
+            this.lblGV.Name = "lblGV";
+            this.lblGV.Size = new System.Drawing.Size(0, 13);
+            this.lblGV.TabIndex = 1;
+            // 
             // frmSummary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 318);
+            this.Controls.Add(this.lblGV);
             this.Controls.Add(this.lblInstruction);
             this.Name = "frmSummary";
             this.Text = "Summary";
+            this.Load += new System.EventHandler(this.frmSummary_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -57,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblInstruction;
+        private System.Windows.Forms.Label lblGV;
     }
 }

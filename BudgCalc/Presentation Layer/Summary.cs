@@ -15,5 +15,12 @@ namespace BudgCalc.Presentation_Layer
         {
             InitializeComponent();
         }
+
+        private void frmSummary_Load(object sender, EventArgs e)
+        {
+            lblGV.Text = Global_Variable.transact.Amount.ToString();
+                //Global_Variable.selectedAmount.ToString();
+               
+        }
     }
 }

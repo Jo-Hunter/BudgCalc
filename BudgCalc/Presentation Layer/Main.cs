@@ -32,6 +32,16 @@ namespace BudgCalc
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
+            Transaction tran = new Transaction();
+            tran.Amount = double.Parse(txtAmount.Text);
+            
+            Global_Variable.transact = tran;
+
+            
+
+
+
             frmSummary sum = new frmSummary();
             
 

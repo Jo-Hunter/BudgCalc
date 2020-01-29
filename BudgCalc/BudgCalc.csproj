@@ -46,6 +46,7 @@
     <Compile Include="Business_Layer\Source.cs" />
     <Compile Include="Business_Layer\Transaction.cs" />
     <Compile Include="Data_Access_Layer\ConnectionManager.cs" />
+    <Compile Include="Global Variable.cs" />
     <Compile Include="Presentation Layer\BudgetCategories.cs">
       <SubType>Form</SubType>
     </Compile>
