@@ -18,8 +18,10 @@ namespace BudgCalc.Presentation_Layer
 
         private void frmSummary_Load(object sender, EventArgs e)
         {
-            lblGV.Text = Global_Variable.transact.Amount.ToString() + Global_Variable.transact.CategoryID.ToString();
-
+            lblGV.Text = Global_Variable.transact.Amount.ToString() +
+                " " + Global_Variable.transact.CategoryID.ToString() +
+                " " + Global_Variable.transact.IsCredit.ToString() +
+                " " + Global_Variable.transact.SourceID.ToString();
                 //Global_Variable.selectedAmount.ToString();
                
         }

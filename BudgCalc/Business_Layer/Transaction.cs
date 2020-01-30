@@ -11,6 +11,13 @@ namespace BudgCalc.Business_Layer
         private int categoryid, sourceid;
         private string categoryname, description;
         private double amount;
+        private bool iscredit;
+
+        public bool IsCredit
+        {
+            get { return iscredit; }
+            set { iscredit = value; }
+        }
 
         public int CategoryID
         {
@@ -44,13 +51,14 @@ namespace BudgCalc.Business_Layer
 
         public Transaction() { }
 
-        public Transaction(int categoryid, string categoryname, string description, double amount, int sourceid)
+        public Transaction(int categoryid, string categoryname, string description, double amount, int sourceid, bool iscredit)
         {
             CategoryID = categoryid;
             CategoryName = categoryname;
             Description = description;
             Amount = amount;
             SourceID = sourceid;
+            IsCredit = iscredit;
         }
     }
 }

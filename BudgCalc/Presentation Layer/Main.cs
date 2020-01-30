@@ -33,22 +33,82 @@ namespace BudgCalc
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
+
+       
+            // validate then save the the details in an object
             Transaction tran = new Transaction();
-            tran.Amount = double.Parse(txtAmount.Text);
-            tran.CategoryID = int.Parse(cbCategory.SelectedIndex.ToString()) + 1; // this index starts at 0
+            bool isValid = true;
 
+            if (rbEarned.Checked)
+            {
+                tran.IsCredit = true;
+            }
+            else if (rbSpent.Checked)
+            {
+                tran.IsCredit = false;
+            }
+            else
+            {
+                MessageBox.Show("Please select whether you have earned or spent this money.");
+                isValid = false;
+            }
 
-            Global_Variable.transact = tran;
+            if (cbCategory.SelectedIndex>=0)
+            {
+                // +1 cb index starts at 0, databsae starts at 1
+                tran.CategoryID = int.Parse(cbCategory.SelectedIndex.ToString()) + 1;
+               
+            }
+            else
+            {
+                MessageBox.Show("Please assign the budget category that this money represents.");
+                isValid = false;
+            }
 
-            //int.Parse(lbSearch.Items[cbSearch.SelectedIndex].ToString())
+            if (cbAccount.SelectedIndex>=0)
+            {
+                tran.SourceID = int.Parse(cbAccount.SelectedIndex.ToString()) + 1;
+            }
+            else
+            {
+                MessageBox.Show("Please select the account where this money ACTUALLY was spent from or " +
+                    "arrived into.");
+                isValid = false;
+            }
 
+            if (double.TryParse(txtAmount.Text, out double result))
+            {
+                // I am hoping this is true if a double
+                tran.Amount = double.Parse(txtAmount.Text);
+            }
+            else
+            {
+                MessageBox.Show("So this should pop up if the amount box is not a number");
+                isValid = false;
+            }
 
-
-
-            frmSummary sum = new frmSummary();
             
 
-            sum.Show();
+            if (isValid==true)
+            {
+                Global_Variable.transact = tran;
+                frmSummary sum = new frmSummary();
+                sum.Show();
+            }
+            else
+            {
+                MessageBox.Show("so the isvalid turned out to be false");
+                isValid = true;
+            }
+          
+
+
+
+
+            
+            
+
+            
             
 
 
