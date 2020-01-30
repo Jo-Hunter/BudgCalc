@@ -35,10 +35,13 @@ namespace BudgCalc
 
             Transaction tran = new Transaction();
             tran.Amount = double.Parse(txtAmount.Text);
-            
+            tran.CategoryID = int.Parse(cbCategory.SelectedIndex.ToString()) + 1; // this index starts at 0
+
+
             Global_Variable.transact = tran;
 
-            
+            //int.Parse(lbSearch.Items[cbSearch.SelectedIndex].ToString())
+
 
 
 
