@@ -129,7 +129,16 @@ namespace BudgCalc
 
             if (double.TryParse(txtAmount.Text, out double result ))
             {
-                tran.Amount = result;
+
+                if (tran.IsCredit)
+                {
+                    tran.Amount = result;
+                }
+                else
+                {
+                    tran.Amount = result*-1;
+                }
+                
             }
             else
             {
@@ -155,18 +164,33 @@ namespace BudgCalc
                 else // otherwise check through list items to see if this category has been added before.
                 {
                     // check through all the existing arrays in the global variable
-                    for (int i = 0; objList.Count >= i; i++)
+                    for (int i = 0; objList.Count > i; i++)
                     {
                         // if there is another entry in the same category, I need to update 
                         // with the new figure, but otherwise I add a new list item array.
                         if ((int)(objList[i][0]) == tran.CategoryID)
                         {
-                            // 
+                          
                             // i = objList.Count + 1;
-                            // TODO now check if the source is the same.
+                         
                             if ((int)(objList[i][1]) == tran.SourceID)
                             {
-                                // TODO need to update amount here
+                                double tot;
+                                double curr = double.Parse(objList[i][2].ToString());
+
+                                // creates double negative
+                                //if (tran.IsCredit)
+                                //{
+                                //    tot = curr + tran.Amount;
+                                //}
+                                //else
+                                //{
+                                //   tot = curr - tran.Amount;
+                                //}
+
+                                tot = curr + tran.Amount;
+                                Global_Variable.tally_arr[i][2]= tot;
+
                                 savedToGlobal = true;
                             }
                         }

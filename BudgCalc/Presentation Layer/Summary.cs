@@ -24,11 +24,22 @@ namespace BudgCalc.Presentation_Layer
             //    " " + Global_Variable.transact.SourceID.ToString();
             //    //Global_Variable.selectedAmount.ToString();
 
+            string info = "";
+
             if (Global_Variable.tally_arr.Count > 0)
             {
-                lblGV.Text = "the tally list is: " + Global_Variable.tally_arr[0][0].ToString()
-                    + ", " + Global_Variable.tally_arr[0][1].ToString() + ", "
-                    + Global_Variable.tally_arr[0][2].ToString();
+
+                for (int i = 0; i<Global_Variable.tally_arr.Count;i++)
+                {
+                    info = info + "the tally list is: " + Global_Variable.tally_arr[i][0].ToString()
+                    + ", " + Global_Variable.tally_arr[i][1].ToString() + ", "
+                    + Global_Variable.tally_arr[i][2].ToString() + "\n";
+
+                }
+
+                
+
+
             }
             else
             {
@@ -36,6 +47,7 @@ namespace BudgCalc.Presentation_Layer
                 Console.WriteLine();
             }
 
+            lblGV.Text = info;
             //if (Global_Variable.transact.CategoryID!=0)
             //{
             //    lblGV.Text = Global_Variable.transact.CategoryID.ToString();
