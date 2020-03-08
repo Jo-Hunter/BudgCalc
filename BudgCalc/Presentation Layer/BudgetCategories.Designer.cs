@@ -28,29 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvCategories = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // listView1
+            // lvCategories
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvCategories.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
-            this.listView1.Location = new System.Drawing.Point(22, 35);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(461, 208);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.columnHeader3,
+            this.columnHeader5});
+            this.lvCategories.Location = new System.Drawing.Point(22, 35);
+            this.lvCategories.Name = "lvCategories";
+            this.lvCategories.Size = new System.Drawing.Size(461, 208);
+            this.lvCategories.TabIndex = 0;
+            this.lvCategories.UseCompatibleStateImageBehavior = false;
+            this.lvCategories.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "increment";
             // 
             // columnHeader1
             // 
@@ -60,6 +66,10 @@
             // 
             this.columnHeader2.Text = "Assigned funds (per period)";
             this.columnHeader2.Width = 154;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Source (where money is held)";
             // 
             // btnAdd
             // 
@@ -89,13 +99,10 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // columnHeader3
+            // columnHeader5
             // 
-            this.columnHeader3.Text = "Source (where money is held)";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "increment";
+            this.columnHeader5.Text = "Description";
+            this.columnHeader5.Width = 120;
             // 
             // frmBudget
             // 
@@ -105,16 +112,17 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lvCategories);
             this.Name = "frmBudget";
             this.Text = "Budget Categories";
+            this.Load += new System.EventHandler(this.frmBudget_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvCategories;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button btnAdd;
@@ -122,5 +130,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }
