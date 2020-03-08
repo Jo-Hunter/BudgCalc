@@ -18,6 +18,7 @@ namespace BudgCalc
         // tally_arr is a list of arrays which are all 3 long.
         // 0 is categoryID
         public static List<object[]> tally_arr;
+        public static int currentPeriod;
 
     }
 }

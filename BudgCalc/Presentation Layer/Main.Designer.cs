@@ -120,6 +120,7 @@
             this.btnPeriod.TabIndex = 8;
             this.btnPeriod.Text = "End Period";
             this.btnPeriod.UseVisualStyleBackColor = true;
+            this.btnPeriod.Click += new System.EventHandler(this.btnPeriod_Click);
             // 
             // rbSpent
             // 

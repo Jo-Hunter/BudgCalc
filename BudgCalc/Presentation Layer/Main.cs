@@ -32,42 +32,9 @@ namespace BudgCalc
         private void btnAdd_Click(object sender, EventArgs e)
         {
 
-            // so get the period from the database and 
-            // save the data into Transaction database
+            
 
-            // i probably need a class for calculating the period. No probably need to access the database
-            // when I display the 
-
-            // I want to add an array to my array if the budget category is different or source.
-
-
-            //int arr_length = Global_Variable.tally_arr.GetLength(0) + 1;
-            //Console.Write("arr_length " + arr_length);
-            //Console.WriteLine();
-
-            //int[] entry = { 1, 1, 3 };
-
-            //Global_Variable.tally_arr[arr_length][] = Global_Variable.tally_arr + entry;
-
-            //Array.Resize(ref array, newsize);
-            //array[newsize - 1] = "newvalue"
-            //var i = new List<int[]>();
-            //int[] entry = { 1, 0, 92 };
-
-            //var i = Global_Variable.tally_arr.Add(, entry);
-            ////i = i.Add(entry);
-
-
-            //int j = 9;
-            //Global_Variable.tally_arr = i.Add(entry);
-
-            //List<string[]> logList = new List<string[]>();
-            //logList.Add(new string[] { "item 1", "item 2", "item 3" });
-
-            //List<int[]> objList = new List<int[]>();
-            //objList.Add(new int[] { 1, 0, 2});
-
-            // init
+           // init
             int catID = 0;
             int srcID = 0;
             int amount = 0;
@@ -86,6 +53,10 @@ namespace BudgCalc
 
             // create Transaction object for data of this transaction.
             Transaction tran = new Transaction();
+
+
+
+
 
             // Validation
             bool isValid = true;
@@ -150,6 +121,21 @@ namespace BudgCalc
             if (isValid)
             {
 
+                if (Global_Variable.currentPeriod == 0)
+                {
+                    // first transaction, create first period upon first valid entry.
+                    UpdatePeriod();
+                    Global_Variable.currentPeriod = 1;
+                    tran.Period = 1;
+                    
+                }
+                else
+                {
+                    tran.Period = Global_Variable.currentPeriod;
+                }
+
+
+
                 // are there any entries in the global array already?
                 if (objList.Count == 0) // if empty, add this as a new list item.
                 {
@@ -160,6 +146,7 @@ namespace BudgCalc
 
                     Global_Variable.tally_arr.Add(entry);
                     savedToGlobal = true;
+                    SaveTransaction(tran);
                 }
                 else // otherwise check through list items to see if this category has been added before.
                 {
@@ -175,23 +162,15 @@ namespace BudgCalc
                          
                             if ((int)(objList[i][1]) == tran.SourceID)
                             {
+                                
                                 double tot;
-                                double curr = double.Parse(objList[i][2].ToString());
-
-                                // creates double negative
-                                //if (tran.IsCredit)
-                                //{
-                                //    tot = curr + tran.Amount;
-                                //}
-                                //else
-                                //{
-                                //   tot = curr - tran.Amount;
-                                //}
+                                double curr = double.Parse(objList[i][2].ToString());                               
 
                                 tot = curr + tran.Amount;
                                 Global_Variable.tally_arr[i][2]= tot;
 
                                 savedToGlobal = true;
+                                SaveTransaction(tran);
                             }
                         }
                         
@@ -206,6 +185,7 @@ namespace BudgCalc
 
                         Global_Variable.tally_arr.Add(entry);
                         savedToGlobal = true;
+                        SaveTransaction(tran);
                     }
                 }
                 Global_Variable.transact = tran;
@@ -217,76 +197,83 @@ namespace BudgCalc
                 MessageBox.Show("Fix the errors in this transaction and try again.");
             }       
 
-            //if (cbAccount.SelectedIndex>=0)
-            //{
-            //    tran.SourceID = int.Parse(cbAccount.SelectedIndex.ToString()) + 1;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Please select the account where this money ACTUALLY was spent from or " +
-            //        "arrived into.");
-            //    isValid = false;
-            //}
-
-            //if (double.TryParse(txtAmount.Text, out double result))
-            //{
-            //    // I am hoping this is true if a double
-            //    tran.Amount = double.Parse(txtAmount.Text);
-            //}
-            //else
-            //{
-            //    MessageBox.Show("So this should pop up if the amount box is not a number");
-            //    isValid = false;
-            //}
-
-            
-
-            //if (isValid==true)
-            //{
-            //    Global_Variable.transact = tran;
-            //    frmSummary sum = new frmSummary();
-            //    sum.Show();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("so the isvalid turned out to be false");
-            //    isValid = true;
-            //}
-
-
-
-
-            //if (needNew)
-            //{
-            //    // if you need a new list item... this format
-            //    //List<int[]> objList = Global_Variable.tally_arr;
-            //    objList.Add(new object[] { catID, srcID, amount });
-            //    Global_Variable.tally_arr = objList;
-            //}
-            //else
-            //{
-                
-            //    for (int i = 0; objList.Count > i; i++)
-            //    {
-            //        if ((int)(objList[i][0]) == tran.CategoryID && (int)(objList[i][1]) == tran.SourceID)
-            //        {
-            //            if (tran.IsCredit)
-            //            {
-            //                objList[i][3] = (int)(objList[i][3]) + tran.Amount;
-            //            }
-            //        }
-            //    }
-                
-            //}
-
-
-            
-
-
-
+           
 
 
             // and will later do business.
+        }
+
+        private void SaveTransaction(Transaction t)
+        {
+            Transaction tran = t;
+            
+            
+            // TODO insert transaction into table using SP
+            // Put appropriate stored proc depending on whether new or updated customer.
+
+
+            string addQuery;
+            
+            addQuery = "sp_Transactions_AddTransaction";
+            
+            // prepare connection, open, prepare SqlCommand.
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(addQuery, conn);
+            // Tell program to use stored procedures.
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // Add parametres.
+            cmd.Parameters.AddWithValue("@SourceID", tran.SourceID);
+            cmd.Parameters.AddWithValue("@Period", tran.Period);
+            cmd.Parameters.AddWithValue("@Amount", tran.Amount);
+            cmd.Parameters.AddWithValue("@CreditDebit", tran.IsCredit);
+            cmd.Parameters.AddWithValue("@CategoryID", tran.CategoryID);
+            
+            // get the output.
+            
+            cmd.Parameters.AddWithValue("@NewTransactionID", SqlDbType.Int).Direction = ParameterDirection.Output;
+            
+            // Use transactions to call database.
+            cmd.Transaction = conn.BeginTransaction();
+            cmd.ExecuteNonQuery();
+            cmd.Transaction.Commit();
+            // Close connection.
+            conn.Close();
+            // Close window.
+            this.Close();
+        }
+
+        private void UpdatePeriod()
+        {
+
+
+            int per = Global_Variable.currentPeriod;
+            
+            string addQuery;
+
+            addQuery = "sp_Periods_AddPeriod";
+
+            // prepare connection, open, prepare SqlCommand.
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(addQuery, conn);
+            // Tell program to use stored procedures.
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            // Add parametres.
+            cmd.Parameters.AddWithValue("@Period", per);
+            cmd.Parameters.AddWithValue("@NewPeriodID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+            // Use transactions to call database.
+            cmd.Transaction = conn.BeginTransaction();
+            cmd.ExecuteNonQuery();
+            cmd.Transaction.Commit();
+            // Close connection.
+            conn.Close();
+            // Close window.
+            this.Close();
+            MessageBox.Show("after updating the period... " + Global_Variable.currentPeriod.ToString());
         }
 
         private void lblSpendAccount_Click(object sender, EventArgs e)
@@ -298,9 +285,8 @@ namespace BudgCalc
         {
             PrefillCategoryCB();
             PrefillSource();
-            //int[][] tally = new int[0][];
-            //Global_Variable.tally_arr = tally;
-            //ArrayList tally = new ArrayList();
+
+            FindPeriod();
 
             var tally = new List<object[]>();
 
@@ -378,6 +364,34 @@ namespace BudgCalc
             }
         }
 
+        private void FindPeriod()
+        {
+            string findQuery;
+            findQuery = "sp_Periods_GetPeriod";
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(findQuery, conn);
+
+            object result = cmd.ExecuteScalar();
+
+            if (result != null)
+            {
+                int ans = Convert.ToInt32(result);
+                Global_Variable.currentPeriod = ans;
+                MessageBox.Show("result = " + ans);
+            }
+            else
+            {
+                // this should only ever happen once... but the first time it's ran, it needs this
+                Global_Variable.currentPeriod = 0;
+                MessageBox.Show(Global_Variable.currentPeriod.ToString());
+            }
+
+            conn.Close();
+
+           
+        }
+
         private void sourcesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSource sou = new frmSource();
@@ -397,6 +411,13 @@ namespace BudgCalc
         {
             frmManager mgr = new frmManager();
             mgr.Show();
+        }
+
+        private void btnPeriod_Click(object sender, EventArgs e)
+        {
+            // create a new period
+            Global_Variable.currentPeriod = Global_Variable.currentPeriod + 1;
+            UpdatePeriod();
         }
     }
 }
