@@ -377,5 +377,26 @@ namespace BudgCalc
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void sourcesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSource sou = new frmSource();
+            sou.Show();
+
+            
+            
+        }
+
+        private void budgetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBudget bdg = new frmBudget();
+            bdg.Show();
+        }
+
+        private void logToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManager mgr = new frmManager();
+            mgr.Show();
+        }
     }
 }

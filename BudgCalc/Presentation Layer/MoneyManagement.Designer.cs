@@ -42,9 +42,9 @@
             // 
             // lvBudget
             // 
-            this.lvBudget.Location = new System.Drawing.Point(13, 57);
+            this.lvBudget.Location = new System.Drawing.Point(15, 49);
             this.lvBudget.Name = "lvBudget";
-            this.lvBudget.Size = new System.Drawing.Size(517, 280);
+            this.lvBudget.Size = new System.Drawing.Size(517, 285);
             this.lvBudget.TabIndex = 0;
             this.lvBudget.UseCompatibleStateImageBehavior = false;
             this.lvBudget.View = System.Windows.Forms.View.Details;
@@ -52,7 +52,7 @@
             // lbtlTotalBudget
             // 
             this.lbtlTotalBudget.AutoSize = true;
-            this.lbtlTotalBudget.Location = new System.Drawing.Point(12, 24);
+            this.lbtlTotalBudget.Location = new System.Drawing.Point(15, 24);
             this.lbtlTotalBudget.Name = "lbtlTotalBudget";
             this.lbtlTotalBudget.Size = new System.Drawing.Size(90, 13);
             this.lbtlTotalBudget.TabIndex = 1;
@@ -60,11 +60,11 @@
             // 
             // btnAddM
             // 
-            this.btnAddM.Location = new System.Drawing.Point(12, 357);
+            this.btnAddM.Location = new System.Drawing.Point(15, 357);
             this.btnAddM.Name = "btnAddM";
             this.btnAddM.Size = new System.Drawing.Size(148, 23);
             this.btnAddM.TabIndex = 2;
-            this.btnAddM.Text = "Edit";
+            this.btnAddM.Text = "Edit Period";
             this.btnAddM.UseVisualStyleBackColor = true;
             // 
             // btnCancelM
