@@ -241,7 +241,7 @@ namespace BudgCalc
             // Close connection.
             conn.Close();
             // Close window.
-            this.Close();
+            //this.Close();
         }
 
         private void UpdatePeriod()
@@ -366,28 +366,35 @@ namespace BudgCalc
 
         private void FindPeriod()
         {
-            string findQuery;
-            findQuery = "sp_Periods_GetPeriod";
-            SqlConnection conn = ConnectionManager.DatabaseConnection();
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(findQuery, conn);
 
-            object result = cmd.ExecuteScalar();
+            Global_Variable.currentPeriod = 1;
 
-            if (result != null)
-            {
-                int ans = Convert.ToInt32(result);
-                Global_Variable.currentPeriod = ans;
-                MessageBox.Show("result = " + ans);
-            }
-            else
-            {
-                // this should only ever happen once... but the first time it's ran, it needs this
-                Global_Variable.currentPeriod = 0;
-                MessageBox.Show(Global_Variable.currentPeriod.ToString());
-            }
+            // the below is the actual code, just removing a varioable to further test
+            // transaction
 
-            conn.Close();
+            //string findQuery;
+            //findQuery = "sp_Periods_GetPeriod";
+            //SqlConnection conn = ConnectionManager.DatabaseConnection();
+            //conn.Open();
+            //SqlCommand cmd = new SqlCommand(findQuery, conn);
+
+            //// the problem is in the SP or should I be using scalar? Study required
+            //object result = cmd.ExecuteScalar();
+
+            //if (result != null)
+            //{
+            //    int ans = Convert.ToInt32(result);
+            //    Global_Variable.currentPeriod = ans;
+            //    MessageBox.Show("result = " + ans);
+            //}
+            //else
+            //{
+            //    // this should only ever happen once... but the first time it's ran, it needs this
+            //    Global_Variable.currentPeriod = 0;
+            //    MessageBox.Show(Global_Variable.currentPeriod.ToString());
+            //}
+
+            //conn.Close();
 
            
         }
