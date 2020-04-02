@@ -369,34 +369,35 @@ namespace BudgCalc
 
             Global_Variable.currentPeriod = 1;
 
-            // the below is the actual code, just removing a varioable to further test
-            // transaction
+            //the below is the actual code, just removing a varioable to further test
+            //transaction
 
-            //string findQuery;
-            //findQuery = "sp_Periods_GetPeriod";
-            //SqlConnection conn = ConnectionManager.DatabaseConnection();
-            //conn.Open();
-            //SqlCommand cmd = new SqlCommand(findQuery, conn);
+            string findQuery;
+            findQuery = "sp_Periods_GetPeriod";
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(findQuery, conn);
 
-            //// the problem is in the SP or should I be using scalar? Study required
-            //object result = cmd.ExecuteScalar();
+            // the problem is in the SP or should I be using scalar? Study required
+            object result = cmd.Parameters.AddWithValue("@CurrentPeriod", SqlDbType.Int).Direction = ParameterDirection.Output;
+            //ExecuteScalar();
 
-            //if (result != null)
-            //{
-            //    int ans = Convert.ToInt32(result);
-            //    Global_Variable.currentPeriod = ans;
-            //    MessageBox.Show("result = " + ans);
-            //}
-            //else
-            //{
-            //    // this should only ever happen once... but the first time it's ran, it needs this
-            //    Global_Variable.currentPeriod = 0;
-            //    MessageBox.Show(Global_Variable.currentPeriod.ToString());
-            //}
+            if (result != null)
+            {
+                int ans = Convert.ToInt32(result);
+                Global_Variable.currentPeriod = ans;
+                //MessageBox.Show("result = " + ans);
+            }
+            else
+            {
+                // this should only ever happen once... but the first time it's ran, it needs this
+                Global_Variable.currentPeriod = 0;
+                MessageBox.Show(Global_Variable.currentPeriod.ToString());
+            }
 
-            //conn.Close();
+            conn.Close();
 
-           
+
         }
 
         private void sourcesToolStripMenuItem_Click(object sender, EventArgs e)
