@@ -12,9 +12,9 @@ using BudgCalc.Business_Layer;
 
 namespace BudgCalc.Presentation_Layer
 {
-    public partial class frmBudget : Form
+    public partial class frmPlan : Form
     {
-        public frmBudget()
+        public frmPlan()
         {
             InitializeComponent();
         }
@@ -84,6 +84,13 @@ namespace BudgCalc.Presentation_Layer
                 // If something goes wrong, show the stack.
                 MessageBox.Show("Unsuccessful " + ex);
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            frmAddBudget ab = new frmAddBudget();
+            ab.Show();
+
         }
     }
 }

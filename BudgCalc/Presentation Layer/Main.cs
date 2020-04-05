@@ -421,7 +421,7 @@ namespace BudgCalc
 
         private void budgetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBudget bdg = new frmBudget();
+            frmPlan bdg = new frmPlan();
             bdg.Show();
         }
 

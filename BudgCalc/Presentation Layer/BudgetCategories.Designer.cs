@@ -1,6 +1,6 @@
 ﻿namespace BudgCalc.Presentation_Layer
 {
-    partial class frmBudget
+    partial class frmPlan
     {
         /// <summary>
         /// Required designer variable.
@@ -33,10 +33,11 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lvCategories
@@ -46,7 +47,8 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader5});
+            this.columnHeader5,
+            this.columnHeader6});
             this.lvCategories.Location = new System.Drawing.Point(22, 35);
             this.lvCategories.Name = "lvCategories";
             this.lvCategories.Size = new System.Drawing.Size(461, 208);
@@ -65,11 +67,16 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Assigned funds (per period)";
-            this.columnHeader2.Width = 154;
+            this.columnHeader2.Width = 100;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Source (where money is held)";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Purpose";
+            this.columnHeader5.Width = 120;
             // 
             // btnAdd
             // 
@@ -79,6 +86,7 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnCancel
             // 
@@ -99,12 +107,11 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // columnHeader5
+            // columnHeader6
             // 
-            this.columnHeader5.Text = "Description";
-            this.columnHeader5.Width = 120;
+            this.columnHeader6.Text = "Credit/Debit";
             // 
-            // frmBudget
+            // frmPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -113,7 +120,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lvCategories);
-            this.Name = "frmBudget";
+            this.Name = "frmPlan";
             this.Text = "Budget Categories";
             this.Load += new System.EventHandler(this.frmBudget_Load);
             this.ResumeLayout(false);
@@ -131,5 +138,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

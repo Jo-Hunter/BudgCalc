@@ -27,7 +27,7 @@ namespace BudgCalc.Presentation_Layer
 
         private void budgetCategoriesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBudget budget = new frmBudget();
+            frmPlan budget = new frmPlan();
            
             budget.ShowDialog();
 
