@@ -12,11 +12,18 @@ namespace BudgCalc.Business_Layer
         private string categoryname, description;
         private double amount;
         private bool iscredit;
+        private DateTime transdate;
 
         public bool IsCredit
         {
             get { return iscredit; }
             set { iscredit = value; }
+        }
+
+        public DateTime TransDate
+        {
+            get { return transdate; }
+            set { transdate = value; }
         }
 
         public int CategoryID
@@ -57,7 +64,7 @@ namespace BudgCalc.Business_Layer
 
         public Transaction() { }
 
-        public Transaction(int categoryid, string categoryname, string description, double amount, int sourceid, int period, bool iscredit)
+        public Transaction(int categoryid, string categoryname, string description, double amount, int sourceid, int period, bool iscredit, DateTime transdate)
         {
             CategoryID = categoryid;
             CategoryName = categoryname;
@@ -66,6 +73,7 @@ namespace BudgCalc.Business_Layer
             SourceID = sourceid;
             Period = period;
             IsCredit = iscredit;
+            TransDate = transdate;
         }
     }
 }

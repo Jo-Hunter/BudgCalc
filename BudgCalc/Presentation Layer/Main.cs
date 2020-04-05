@@ -121,6 +121,8 @@ namespace BudgCalc
             if (isValid)
             {
 
+                tran.TransDate = DateTime.Now;
+
                 if (Global_Variable.currentPeriod == 0)
                 {
                     // first transaction, create first period upon first valid entry.
@@ -229,6 +231,7 @@ namespace BudgCalc
             cmd.Parameters.AddWithValue("@Amount", tran.Amount);
             cmd.Parameters.AddWithValue("@CreditDebit", tran.IsCredit);
             cmd.Parameters.AddWithValue("@CategoryID", tran.CategoryID);
+            cmd.Parameters.AddWithValue("@TransDate", tran.TransDate);
             
             // get the output.
             
@@ -378,9 +381,9 @@ namespace BudgCalc
             conn.Open();
             SqlCommand cmd = new SqlCommand(findQuery, conn);
 
-            // the problem is in the SP or should I be using scalar? Study required
+            // this is how you get the output
             object result = cmd.Parameters.AddWithValue("@CurrentPeriod", SqlDbType.Int).Direction = ParameterDirection.Output;
-            //ExecuteScalar();
+            
 
             if (result != null)
             {
@@ -393,6 +396,13 @@ namespace BudgCalc
                 // this should only ever happen once... but the first time it's ran, it needs this
                 Global_Variable.currentPeriod = 0;
                 MessageBox.Show(Global_Variable.currentPeriod.ToString());
+
+                // TODO would my sp create an error if it returned null?
+                // my thoughts are that if so, I would need to call a period exists sp and then the get period 
+                // or could I do that as part of current sp?
+                // if null, make 0.
+
+                // to test I would need to drop the periods in the table. Do this after I build periods in.
             }
 
             conn.Close();
