@@ -51,7 +51,7 @@
             this.columnHeader6});
             this.lvCategories.Location = new System.Drawing.Point(22, 35);
             this.lvCategories.Name = "lvCategories";
-            this.lvCategories.Size = new System.Drawing.Size(461, 208);
+            this.lvCategories.Size = new System.Drawing.Size(537, 208);
             this.lvCategories.TabIndex = 0;
             this.lvCategories.UseCompatibleStateImageBehavior = false;
             this.lvCategories.View = System.Windows.Forms.View.Details;
@@ -90,7 +90,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(350, 269);
+            this.btnCancel.Location = new System.Drawing.Point(426, 269);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(133, 23);
             this.btnCancel.TabIndex = 2;
@@ -100,7 +100,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(187, 269);
+            this.btnDelete.Location = new System.Drawing.Point(217, 269);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(138, 23);
             this.btnDelete.TabIndex = 3;
@@ -110,12 +110,13 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "Credit/Debit";
+            this.columnHeader6.Width = 90;
             // 
             // frmPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 312);
+            this.ClientSize = new System.Drawing.Size(597, 312);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);

@@ -31,7 +31,9 @@ namespace BudgCalc.Presentation_Layer
 
         private void DisplayBudget()
         {
-            string query = "SELECT * from Categories";
+
+            // If date equals NULL, the budget item is current.
+            string query = "SELECT * from Categories WHERE LeaveDate IS NULL";
             // Init the connection.
             SqlConnection conn = ConnectionManager.DatabaseConnection();
 
@@ -53,10 +55,10 @@ namespace BudgCalc.Presentation_Layer
                     double amount = double.Parse(sdr["AssignedAmount"].ToString());
                     string descr = sdr["CategoryDescription"].ToString();
                     int sourceID = int.Parse(sdr["SourceID"].ToString());
-
+                    
                     // Init and populate the Category class
                     Category cat = new Category(id, name, descr, amount, sourceID);
-                    
+
 
                     // Init the ListView by giving the PK.
                     ListViewItem lvi = new ListViewItem(cat.CategoryID.ToString());
@@ -68,6 +70,7 @@ namespace BudgCalc.Presentation_Layer
 
                     // Add the items to the listview.
                     lvCategories.Items.Add(lvi);
+                                 
                 }
 
                 // If the reader has been opened.
