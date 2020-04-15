@@ -28,33 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gb1 = new System.Windows.Forms.GroupBox();
             this.lblAddBudget = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblAddCategory = new System.Windows.Forms.Label();
-            this.lblAddAmount = new System.Windows.Forms.Label();
-            this.lblAddBank = new System.Windows.Forms.Label();
-            this.lblAddPurpose = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.rbAddCredit = new System.Windows.Forms.RadioButton();
             this.rbAddDebit = new System.Windows.Forms.RadioButton();
+            this.rbAddCredit = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblAddPurpose = new System.Windows.Forms.Label();
+            this.lblAddBank = new System.Windows.Forms.Label();
+            this.lblAddAmount = new System.Windows.Forms.Label();
+            this.lblAddCategory = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.cbBank = new System.Windows.Forms.ComboBox();
+            this.tbCat = new System.Windows.Forms.TextBox();
+            this.tbAmount = new System.Windows.Forms.TextBox();
+            this.tbPurpose = new System.Windows.Forms.TextBox();
+            this.gb1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // gb1
             // 
-            this.groupBox1.Controls.Add(this.lblAddBudget);
-            this.groupBox1.Location = new System.Drawing.Point(45, 23);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(365, 64);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.gb1.Controls.Add(this.lblAddBudget);
+            this.gb1.Location = new System.Drawing.Point(45, 23);
+            this.gb1.Name = "gb1";
+            this.gb1.Size = new System.Drawing.Size(365, 64);
+            this.gb1.TabIndex = 0;
+            this.gb1.TabStop = false;
             // 
             // lblAddBudget
             // 
@@ -67,6 +70,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.tbPurpose);
+            this.groupBox2.Controls.Add(this.tbAmount);
+            this.groupBox2.Controls.Add(this.tbCat);
+            this.groupBox2.Controls.Add(this.cbBank);
             this.groupBox2.Controls.Add(this.rbAddDebit);
             this.groupBox2.Controls.Add(this.rbAddCredit);
             this.groupBox2.Controls.Add(this.label1);
@@ -80,32 +87,35 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
-            // lblAddCategory
+            // rbAddDebit
             // 
-            this.lblAddCategory.AutoSize = true;
-            this.lblAddCategory.Location = new System.Drawing.Point(7, 20);
-            this.lblAddCategory.Name = "lblAddCategory";
-            this.lblAddCategory.Size = new System.Drawing.Size(49, 13);
-            this.lblAddCategory.TabIndex = 0;
-            this.lblAddCategory.Text = "Category";
+            this.rbAddDebit.AutoSize = true;
+            this.rbAddDebit.Location = new System.Drawing.Point(233, 134);
+            this.rbAddDebit.Name = "rbAddDebit";
+            this.rbAddDebit.Size = new System.Drawing.Size(70, 17);
+            this.rbAddDebit.TabIndex = 6;
+            this.rbAddDebit.TabStop = true;
+            this.rbAddDebit.Text = "Spending";
+            this.rbAddDebit.UseVisualStyleBackColor = true;
             // 
-            // lblAddAmount
+            // rbAddCredit
             // 
-            this.lblAddAmount.AutoSize = true;
-            this.lblAddAmount.Location = new System.Drawing.Point(7, 46);
-            this.lblAddAmount.Name = "lblAddAmount";
-            this.lblAddAmount.Size = new System.Drawing.Size(43, 13);
-            this.lblAddAmount.TabIndex = 1;
-            this.lblAddAmount.Text = "Amount";
+            this.rbAddCredit.AutoSize = true;
+            this.rbAddCredit.Location = new System.Drawing.Point(106, 134);
+            this.rbAddCredit.Name = "rbAddCredit";
+            this.rbAddCredit.Size = new System.Drawing.Size(61, 17);
+            this.rbAddCredit.TabIndex = 5;
+            this.rbAddCredit.TabStop = true;
+            this.rbAddCredit.Text = "Earning";
+            this.rbAddCredit.UseVisualStyleBackColor = true;
             // 
-            // lblAddBank
+            // label1
             // 
-            this.lblAddBank.AutoSize = true;
-            this.lblAddBank.Location = new System.Drawing.Point(7, 72);
-            this.lblAddBank.Name = "lblAddBank";
-            this.lblAddBank.Size = new System.Drawing.Size(32, 13);
-            this.lblAddBank.TabIndex = 2;
-            this.lblAddBank.Text = "Bank";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 124);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 4;
             // 
             // lblAddPurpose
             // 
@@ -116,35 +126,32 @@
             this.lblAddPurpose.TabIndex = 3;
             this.lblAddPurpose.Text = "Purpose";
             // 
-            // label1
+            // lblAddBank
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 124);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 4;
+            this.lblAddBank.AutoSize = true;
+            this.lblAddBank.Location = new System.Drawing.Point(7, 72);
+            this.lblAddBank.Name = "lblAddBank";
+            this.lblAddBank.Size = new System.Drawing.Size(32, 13);
+            this.lblAddBank.TabIndex = 2;
+            this.lblAddBank.Text = "Bank";
             // 
-            // rbAddCredit
+            // lblAddAmount
             // 
-            this.rbAddCredit.AutoSize = true;
-            this.rbAddCredit.Location = new System.Drawing.Point(13, 124);
-            this.rbAddCredit.Name = "rbAddCredit";
-            this.rbAddCredit.Size = new System.Drawing.Size(61, 17);
-            this.rbAddCredit.TabIndex = 5;
-            this.rbAddCredit.TabStop = true;
-            this.rbAddCredit.Text = "Earning";
-            this.rbAddCredit.UseVisualStyleBackColor = true;
+            this.lblAddAmount.AutoSize = true;
+            this.lblAddAmount.Location = new System.Drawing.Point(7, 46);
+            this.lblAddAmount.Name = "lblAddAmount";
+            this.lblAddAmount.Size = new System.Drawing.Size(43, 13);
+            this.lblAddAmount.TabIndex = 1;
+            this.lblAddAmount.Text = "Amount";
             // 
-            // rbAddDebit
+            // lblAddCategory
             // 
-            this.rbAddDebit.AutoSize = true;
-            this.rbAddDebit.Location = new System.Drawing.Point(94, 124);
-            this.rbAddDebit.Name = "rbAddDebit";
-            this.rbAddDebit.Size = new System.Drawing.Size(70, 17);
-            this.rbAddDebit.TabIndex = 6;
-            this.rbAddDebit.TabStop = true;
-            this.rbAddDebit.Text = "Spending";
-            this.rbAddDebit.UseVisualStyleBackColor = true;
+            this.lblAddCategory.AutoSize = true;
+            this.lblAddCategory.Location = new System.Drawing.Point(7, 20);
+            this.lblAddCategory.Name = "lblAddCategory";
+            this.lblAddCategory.Size = new System.Drawing.Size(49, 13);
+            this.lblAddCategory.TabIndex = 0;
+            this.lblAddCategory.Text = "Category";
             // 
             // groupBox3
             // 
@@ -156,6 +163,16 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(215, 37);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(114, 23);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(39, 37);
@@ -165,14 +182,34 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // btnCancel
+            // cbBank
             // 
-            this.btnCancel.Location = new System.Drawing.Point(215, 37);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(114, 23);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.cbBank.FormattingEnabled = true;
+            this.cbBank.Location = new System.Drawing.Point(106, 72);
+            this.cbBank.Name = "cbBank";
+            this.cbBank.Size = new System.Drawing.Size(197, 21);
+            this.cbBank.TabIndex = 7;
+            // 
+            // tbCat
+            // 
+            this.tbCat.Location = new System.Drawing.Point(106, 20);
+            this.tbCat.Name = "tbCat";
+            this.tbCat.Size = new System.Drawing.Size(197, 20);
+            this.tbCat.TabIndex = 8;
+            // 
+            // tbAmount
+            // 
+            this.tbAmount.Location = new System.Drawing.Point(106, 46);
+            this.tbAmount.Name = "tbAmount";
+            this.tbAmount.Size = new System.Drawing.Size(197, 20);
+            this.tbAmount.TabIndex = 9;
+            // 
+            // tbPurpose
+            // 
+            this.tbPurpose.Location = new System.Drawing.Point(106, 98);
+            this.tbPurpose.Name = "tbPurpose";
+            this.tbPurpose.Size = new System.Drawing.Size(197, 20);
+            this.tbPurpose.TabIndex = 10;
             // 
             // frmAddBudget
             // 
@@ -181,11 +218,12 @@
             this.ClientSize = new System.Drawing.Size(441, 371);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gb1);
             this.Name = "frmAddBudget";
             this.Text = "Add Budget";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Load += new System.EventHandler(this.frmAddBudget_Load);
+            this.gb1.ResumeLayout(false);
+            this.gb1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -195,7 +233,7 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gb1;
         private System.Windows.Forms.Label lblAddBudget;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblAddPurpose;
@@ -208,5 +246,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox tbPurpose;
+        private System.Windows.Forms.TextBox tbAmount;
+        private System.Windows.Forms.TextBox tbCat;
+        private System.Windows.Forms.ComboBox cbBank;
     }
 }
