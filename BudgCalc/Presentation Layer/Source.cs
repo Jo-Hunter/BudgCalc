@@ -80,5 +80,12 @@ namespace BudgCalc.Presentation_Layer
                 MessageBox.Show("Unsuccessful " + ex);
             }
         }
+
+        private void btnSourceAdd_Click(object sender, EventArgs e)
+        {
+            frmAddSource source = new frmAddSource();
+            source.ShowDialog();
+
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace BudgCalc
         // 0 is categoryID
         public static List<object[]> tally_arr;
         public static int currentPeriod;
+        public static int budgetID;
 
     }
 }

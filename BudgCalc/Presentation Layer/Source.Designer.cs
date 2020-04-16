@@ -75,6 +75,7 @@
             this.btnSourceAdd.TabIndex = 2;
             this.btnSourceAdd.Text = "Add";
             this.btnSourceAdd.UseVisualStyleBackColor = true;
+            this.btnSourceAdd.Click += new System.EventHandler(this.btnSourceAdd_Click);
             // 
             // btnSourceDelete
             // 

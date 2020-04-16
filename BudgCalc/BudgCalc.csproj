@@ -53,6 +53,12 @@
     <Compile Include="Presentation Layer\AddBudget.Designer.cs">
       <DependentUpon>AddBudget.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation Layer\AddSource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation Layer\AddSource.Designer.cs">
+      <DependentUpon>AddSource.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation Layer\BudgetCategories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Presentation Layer\AddBudget.resx">
       <DependentUpon>AddBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation Layer\AddSource.resx">
+      <DependentUpon>AddSource.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation Layer\BudgetCategories.resx">
       <DependentUpon>BudgetCategories.cs</DependentUpon>
