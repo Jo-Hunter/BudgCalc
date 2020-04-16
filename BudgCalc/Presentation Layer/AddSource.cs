@@ -21,7 +21,7 @@ namespace BudgCalc.Presentation_Layer
             // Fill Combo boxes with possible data for the user to select.
             FillComboBoxes();
 
-            // If Update, make appropriate adjustments and prefill budget data.
+            // If Update, make appropriate adjustments and prefill source data.
             if (Global_Variable.sourceID > 0) // TODO in budget, when it is clicked, add the global
             {
                 this.Text = "Update Source";

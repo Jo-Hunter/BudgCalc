@@ -33,15 +33,29 @@
             this.btnTransCancel = new System.Windows.Forms.Button();
             this.btnDeleteTransaction = new System.Windows.Forms.Button();
             this.btnSearchTrans = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView1
             // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
             this.listView1.Location = new System.Drawing.Point(13, 34);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(600, 239);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // btnUpdate
             // 
@@ -82,6 +96,32 @@
             this.btnSearchTrans.UseVisualStyleBackColor = true;
             this.btnSearchTrans.Click += new System.EventHandler(this.btnSearchTrans_Click);
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Transaction ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "date";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Category Name";
+            this.columnHeader3.Width = 100;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Amount";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Source";
+            this.columnHeader5.Width = 90;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Credit or Debit";
+            // 
             // frmTransPeriod
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,5 +145,11 @@
         private System.Windows.Forms.Button btnTransCancel;
         private System.Windows.Forms.Button btnDeleteTransaction;
         private System.Windows.Forms.Button btnSearchTrans;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

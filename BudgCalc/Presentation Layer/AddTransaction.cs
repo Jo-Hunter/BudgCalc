@@ -25,7 +25,7 @@ namespace BudgCalc.Presentation_Layer
         {
             FillComboBoxes();
 
-            // If Update, make appropriate adjustments and prefill budget data.
+            // If Update, make appropriate adjustments and prefill transaction data.
             if (Global_Variable.transactionID > 0) // TODO in transaction, when it is clicked, add the global
             {
                 this.Text = "Update Transaction";
@@ -59,6 +59,11 @@ namespace BudgCalc.Presentation_Layer
         private void FillTransactionFieldsWithCurrent()
         {
             // TODO
+        }
+
+        private void txtDate_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

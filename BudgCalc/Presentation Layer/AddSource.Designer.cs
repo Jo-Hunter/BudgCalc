@@ -32,13 +32,13 @@
             this.txtSourceID = new System.Windows.Forms.TextBox();
             this.lblSourceID = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtSource = new System.Windows.Forms.TextBox();
             this.lblSource = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnSourceCancel = new System.Windows.Forms.Button();
             this.btnSourceAdd = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtSource = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -80,13 +80,6 @@
             this.groupBox2.Size = new System.Drawing.Size(313, 126);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            // 
-            // txtSource
-            // 
-            this.txtSource.Location = new System.Drawing.Point(97, 53);
-            this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(194, 20);
-            this.txtSource.TabIndex = 2;
             // 
             // lblSource
             // 
@@ -146,6 +139,13 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
             // 
+            // txtSource
+            // 
+            this.txtSource.Location = new System.Drawing.Point(97, 53);
+            this.txtSource.Name = "txtSource";
+            this.txtSource.Size = new System.Drawing.Size(194, 20);
+            this.txtSource.TabIndex = 2;
+            // 
             // frmAddSource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,7 +177,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtSourceID;
         private System.Windows.Forms.Label lblSourceID;
-        private System.Windows.Forms.TextBox txtSource;
         private System.Windows.Forms.Label lblSource;
+        private System.Windows.Forms.TextBox txtSource;
     }
 }
