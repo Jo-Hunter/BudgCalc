@@ -38,5 +38,11 @@ namespace BudgCalc.Presentation_Layer
         {
             this.Close();
         }
+
+        private void btnAddM_Click(object sender, EventArgs e)
+        {
+            frmSearchTrans st = new frmSearchTrans();
+            st.ShowDialog();
+        }
     }
 }

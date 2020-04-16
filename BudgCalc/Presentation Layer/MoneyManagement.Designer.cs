@@ -66,6 +66,7 @@
             this.btnAddM.TabIndex = 2;
             this.btnAddM.Text = "Edit Period";
             this.btnAddM.UseVisualStyleBackColor = true;
+            this.btnAddM.Click += new System.EventHandler(this.btnAddM_Click);
             // 
             // btnCancelM
             // 
