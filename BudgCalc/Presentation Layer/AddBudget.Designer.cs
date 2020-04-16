@@ -29,8 +29,13 @@
         private void InitializeComponent()
         {
             this.gb1 = new System.Windows.Forms.GroupBox();
+            this.tbBudgetID = new System.Windows.Forms.TextBox();
             this.lblAddBudget = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbPurpose = new System.Windows.Forms.TextBox();
+            this.tbAmount = new System.Windows.Forms.TextBox();
+            this.tbCat = new System.Windows.Forms.TextBox();
+            this.cbBank = new System.Windows.Forms.ComboBox();
             this.rbAddDebit = new System.Windows.Forms.RadioButton();
             this.rbAddCredit = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,11 +46,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.cbBank = new System.Windows.Forms.ComboBox();
-            this.tbCat = new System.Windows.Forms.TextBox();
-            this.tbAmount = new System.Windows.Forms.TextBox();
-            this.tbPurpose = new System.Windows.Forms.TextBox();
-            this.tbBudgetID = new System.Windows.Forms.TextBox();
             this.gb1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -60,6 +60,13 @@
             this.gb1.Size = new System.Drawing.Size(346, 64);
             this.gb1.TabIndex = 0;
             this.gb1.TabStop = false;
+            // 
+            // tbBudgetID
+            // 
+            this.tbBudgetID.Location = new System.Drawing.Point(106, 28);
+            this.tbBudgetID.Name = "tbBudgetID";
+            this.tbBudgetID.Size = new System.Drawing.Size(197, 20);
+            this.tbBudgetID.TabIndex = 1;
             // 
             // lblAddBudget
             // 
@@ -88,6 +95,35 @@
             this.groupBox2.Size = new System.Drawing.Size(346, 169);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // tbPurpose
+            // 
+            this.tbPurpose.Location = new System.Drawing.Point(106, 94);
+            this.tbPurpose.Name = "tbPurpose";
+            this.tbPurpose.Size = new System.Drawing.Size(197, 20);
+            this.tbPurpose.TabIndex = 10;
+            // 
+            // tbAmount
+            // 
+            this.tbAmount.Location = new System.Drawing.Point(106, 42);
+            this.tbAmount.Name = "tbAmount";
+            this.tbAmount.Size = new System.Drawing.Size(197, 20);
+            this.tbAmount.TabIndex = 9;
+            // 
+            // tbCat
+            // 
+            this.tbCat.Location = new System.Drawing.Point(106, 16);
+            this.tbCat.Name = "tbCat";
+            this.tbCat.Size = new System.Drawing.Size(197, 20);
+            this.tbCat.TabIndex = 8;
+            // 
+            // cbBank
+            // 
+            this.cbBank.FormattingEnabled = true;
+            this.cbBank.Location = new System.Drawing.Point(106, 67);
+            this.cbBank.Name = "cbBank";
+            this.cbBank.Size = new System.Drawing.Size(197, 21);
+            this.cbBank.TabIndex = 7;
             // 
             // rbAddDebit
             // 
@@ -183,42 +219,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // cbBank
-            // 
-            this.cbBank.FormattingEnabled = true;
-            this.cbBank.Location = new System.Drawing.Point(106, 67);
-            this.cbBank.Name = "cbBank";
-            this.cbBank.Size = new System.Drawing.Size(197, 21);
-            this.cbBank.TabIndex = 7;
-            // 
-            // tbCat
-            // 
-            this.tbCat.Location = new System.Drawing.Point(106, 16);
-            this.tbCat.Name = "tbCat";
-            this.tbCat.Size = new System.Drawing.Size(197, 20);
-            this.tbCat.TabIndex = 8;
-            // 
-            // tbAmount
-            // 
-            this.tbAmount.Location = new System.Drawing.Point(106, 42);
-            this.tbAmount.Name = "tbAmount";
-            this.tbAmount.Size = new System.Drawing.Size(197, 20);
-            this.tbAmount.TabIndex = 9;
-            // 
-            // tbPurpose
-            // 
-            this.tbPurpose.Location = new System.Drawing.Point(106, 94);
-            this.tbPurpose.Name = "tbPurpose";
-            this.tbPurpose.Size = new System.Drawing.Size(197, 20);
-            this.tbPurpose.TabIndex = 10;
-            // 
-            // tbBudgetID
-            // 
-            this.tbBudgetID.Location = new System.Drawing.Point(106, 28);
-            this.tbBudgetID.Name = "tbBudgetID";
-            this.tbBudgetID.Size = new System.Drawing.Size(197, 20);
-            this.tbBudgetID.TabIndex = 1;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmAddBudget
             // 

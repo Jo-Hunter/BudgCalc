@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSourceID = new System.Windows.Forms.TextBox();
+            this.lblSourceID = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSource = new System.Windows.Forms.TextBox();
+            this.lblSource = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnSourceAdd = new System.Windows.Forms.Button();
             this.btnSourceCancel = new System.Windows.Forms.Button();
-            this.lblSourceID = new System.Windows.Forms.Label();
-            this.txtSourceID = new System.Windows.Forms.TextBox();
-            this.lblSource = new System.Windows.Forms.Label();
-            this.txtSource = new System.Windows.Forms.TextBox();
+            this.btnSourceAdd = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -54,6 +54,22 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // txtSourceID
+            // 
+            this.txtSourceID.Location = new System.Drawing.Point(97, 20);
+            this.txtSourceID.Name = "txtSourceID";
+            this.txtSourceID.Size = new System.Drawing.Size(194, 20);
+            this.txtSourceID.TabIndex = 1;
+            // 
+            // lblSourceID
+            // 
+            this.lblSourceID.AutoSize = true;
+            this.lblSourceID.Location = new System.Drawing.Point(7, 27);
+            this.lblSourceID.Name = "lblSourceID";
+            this.lblSourceID.Size = new System.Drawing.Size(55, 13);
+            this.lblSourceID.TabIndex = 0;
+            this.lblSourceID.Text = "SourceID:";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtSource);
@@ -64,6 +80,22 @@
             this.groupBox2.Size = new System.Drawing.Size(313, 126);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // txtSource
+            // 
+            this.txtSource.Location = new System.Drawing.Point(97, 53);
+            this.txtSource.Name = "txtSource";
+            this.txtSource.Size = new System.Drawing.Size(194, 20);
+            this.txtSource.TabIndex = 2;
+            // 
+            // lblSource
+            // 
+            this.lblSource.AutoSize = true;
+            this.lblSource.Location = new System.Drawing.Point(7, 60);
+            this.lblSource.Name = "lblSource";
+            this.lblSource.Size = new System.Drawing.Size(84, 13);
+            this.lblSource.TabIndex = 4;
+            this.lblSource.Text = "Bank or Source:";
             // 
             // groupBox3
             // 
@@ -85,26 +117,6 @@
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Location = new System.Drawing.Point(0, 123);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(313, 81);
-            this.groupBox5.TabIndex = 2;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "groupBox5";
-            // 
-            // btnSourceAdd
-            // 
-            this.btnSourceAdd.Enabled = false;
-            this.btnSourceAdd.Location = new System.Drawing.Point(7, 19);
-            this.btnSourceAdd.Name = "btnSourceAdd";
-            this.btnSourceAdd.Size = new System.Drawing.Size(124, 23);
-            this.btnSourceAdd.TabIndex = 3;
-            this.btnSourceAdd.Text = "Add";
-            this.btnSourceAdd.UseVisualStyleBackColor = true;
-            this.btnSourceAdd.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnSourceCancel
             // 
             this.btnSourceCancel.Location = new System.Drawing.Point(167, 19);
@@ -115,37 +127,24 @@
             this.btnSourceCancel.UseVisualStyleBackColor = true;
             this.btnSourceCancel.Click += new System.EventHandler(this.button2_Click);
             // 
-            // lblSourceID
+            // btnSourceAdd
             // 
-            this.lblSourceID.AutoSize = true;
-            this.lblSourceID.Location = new System.Drawing.Point(7, 27);
-            this.lblSourceID.Name = "lblSourceID";
-            this.lblSourceID.Size = new System.Drawing.Size(55, 13);
-            this.lblSourceID.TabIndex = 0;
-            this.lblSourceID.Text = "SourceID:";
+            this.btnSourceAdd.Location = new System.Drawing.Point(7, 19);
+            this.btnSourceAdd.Name = "btnSourceAdd";
+            this.btnSourceAdd.Size = new System.Drawing.Size(124, 23);
+            this.btnSourceAdd.TabIndex = 3;
+            this.btnSourceAdd.Text = "Add";
+            this.btnSourceAdd.UseVisualStyleBackColor = true;
+            this.btnSourceAdd.Click += new System.EventHandler(this.button1_Click);
             // 
-            // txtSourceID
+            // groupBox5
             // 
-            this.txtSourceID.Location = new System.Drawing.Point(97, 20);
-            this.txtSourceID.Name = "txtSourceID";
-            this.txtSourceID.Size = new System.Drawing.Size(194, 20);
-            this.txtSourceID.TabIndex = 1;
-            // 
-            // lblSource
-            // 
-            this.lblSource.AutoSize = true;
-            this.lblSource.Location = new System.Drawing.Point(7, 60);
-            this.lblSource.Name = "lblSource";
-            this.lblSource.Size = new System.Drawing.Size(84, 13);
-            this.lblSource.TabIndex = 4;
-            this.lblSource.Text = "Bank or Source:";
-            // 
-            // txtSource
-            // 
-            this.txtSource.Location = new System.Drawing.Point(97, 53);
-            this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(194, 20);
-            this.txtSource.TabIndex = 2;
+            this.groupBox5.Location = new System.Drawing.Point(0, 123);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(313, 81);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "groupBox5";
             // 
             // frmAddSource
             // 

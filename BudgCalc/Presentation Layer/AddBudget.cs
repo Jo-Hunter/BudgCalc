@@ -29,16 +29,16 @@ namespace BudgCalc.Presentation_Layer
             // if update, get all the fields
 
             // Fill Combo boxes with possible data for the user to select.
-            //FillComboBoxes();
+            FillComboBoxes();
 
             // If Update, make appropriate adjustments and prefill budget data.
-            if (Global_Variable.budgetID > 0)
+            if (Global_Variable.budgetID > 0) // TODO in budget, when it is clicked, add the global
             {
                 this.Text = "Update Budget";
                 btnAdd.Text = "&Update";
                 // user cannot change only view
                 tbBudgetID.Enabled = false;
-                //FillCustomerFieldsWithCurrent();
+                FillBudgetFieldsWithCurrent();
 
             }
             else // if add new budget item
@@ -51,6 +51,27 @@ namespace BudgCalc.Presentation_Layer
                 lblAddBudget.Text = "Budget ID generated automatically.";
                 
             }
+        }
+
+        private void FillComboBoxes()
+        {
+            // TODO
+            // get the source names and fill combobox
+        }
+
+        private void FillBudgetFieldsWithCurrent()
+        {
+            // TODO
+            // prefill all the fields using the ID given
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+            // TODO 
+            // close the changed budget by adding an end date
+            // and create a NEW entry with this these details.
+            // in order to keep the old budget records
         }
     }
 }

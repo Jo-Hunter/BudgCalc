@@ -18,9 +18,30 @@ namespace BudgCalc.Presentation_Layer
 
         private void AddSource_Load(object sender, EventArgs e)
         {
+            // Fill Combo boxes with possible data for the user to select.
+            FillComboBoxes();
 
+            // If Update, make appropriate adjustments and prefill budget data.
+            if (Global_Variable.budgetID > 0) // TODO in budget, when it is clicked, add the global
+            {
+                this.Text = "Update Budget";
+                btnSourceAdd.Text = "&Update";
+                // user cannot change only view
+                txtSourceID.Enabled = false;
+                FillSourceFieldsWithCurrent();
+
+            }
+            else // if add new budget item
+            {
+                // inform customer of ID process.
+                this.Text = "Add Budget";
+                btnSourceAdd.Text = "Add";
+
+                // makes the box disappear
+                txtSourceID.Visible = false;
+                lblSource.Text = "Budget ID generated automatically.";
+            }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -28,7 +49,17 @@ namespace BudgCalc.Presentation_Layer
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // TODO
+        }
 
+        private void FillComboBoxes()
+        {
+            // TODO
+        }
+
+        private void FillSourceFieldsWithCurrent()
+        {
+            // TODO add new data into db
         }
     }
 }
