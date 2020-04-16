@@ -20,6 +20,8 @@ namespace BudgCalc
         public static List<object[]> tally_arr;
         public static int currentPeriod;
         public static int budgetID;
+        public static int transactionID;
+        public static int sourceID;
 
     }
 }

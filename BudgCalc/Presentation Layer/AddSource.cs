@@ -22,9 +22,9 @@ namespace BudgCalc.Presentation_Layer
             FillComboBoxes();
 
             // If Update, make appropriate adjustments and prefill budget data.
-            if (Global_Variable.budgetID > 0) // TODO in budget, when it is clicked, add the global
+            if (Global_Variable.sourceID > 0) // TODO in budget, when it is clicked, add the global
             {
-                this.Text = "Update Budget";
+                this.Text = "Update Source";
                 btnSourceAdd.Text = "&Update";
                 // user cannot change only view
                 txtSourceID.Enabled = false;
@@ -34,12 +34,12 @@ namespace BudgCalc.Presentation_Layer
             else // if add new budget item
             {
                 // inform customer of ID process.
-                this.Text = "Add Budget";
+                this.Text = "Add Source";
                 btnSourceAdd.Text = "Add";
 
                 // makes the box disappear
                 txtSourceID.Visible = false;
-                lblSource.Text = "Budget ID generated automatically.";
+                lblSource.Text = "Source ID generated automatically.";
             }
         }
         private void button2_Click(object sender, EventArgs e)

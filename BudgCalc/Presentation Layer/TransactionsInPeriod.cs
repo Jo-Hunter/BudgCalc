@@ -26,5 +26,11 @@ namespace BudgCalc.Presentation_Layer
         {
             this.Hide();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            frmAddTrans ad = new frmAddTrans();
+            ad.ShowDialog();
+        }
     }
 }
