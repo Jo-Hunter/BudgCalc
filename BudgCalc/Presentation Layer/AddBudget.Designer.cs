@@ -32,6 +32,7 @@
             this.tbBudgetID = new System.Windows.Forms.TextBox();
             this.lblAddBudget = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.tbPurpose = new System.Windows.Forms.TextBox();
             this.tbAmount = new System.Windows.Forms.TextBox();
             this.cbBank = new System.Windows.Forms.ComboBox();
@@ -45,7 +46,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.cbCatID = new System.Windows.Forms.ComboBox();
+            this.lbBankID = new System.Windows.Forms.ListBox();
             this.gb1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -79,6 +81,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbBankID);
+            this.groupBox2.Controls.Add(this.cbCatID);
             this.groupBox2.Controls.Add(this.cbCategory);
             this.groupBox2.Controls.Add(this.tbPurpose);
             this.groupBox2.Controls.Add(this.tbAmount);
@@ -95,6 +99,14 @@
             this.groupBox2.Size = new System.Drawing.Size(346, 169);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(106, 14);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(197, 21);
+            this.cbCategory.TabIndex = 11;
             // 
             // tbPurpose
             // 
@@ -214,13 +226,23 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // cbCategory
+            // cbCatID
             // 
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(106, 14);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(197, 21);
-            this.cbCategory.TabIndex = 11;
+            this.cbCatID.FormattingEnabled = true;
+            this.cbCatID.Location = new System.Drawing.Point(310, 14);
+            this.cbCatID.Name = "cbCatID";
+            this.cbCatID.Size = new System.Drawing.Size(36, 21);
+            this.cbCatID.TabIndex = 12;
+            this.cbCatID.Visible = false;
+            // 
+            // lbBankID
+            // 
+            this.lbBankID.FormattingEnabled = true;
+            this.lbBankID.Location = new System.Drawing.Point(310, 67);
+            this.lbBankID.Name = "lbBankID";
+            this.lbBankID.Size = new System.Drawing.Size(36, 17);
+            this.lbBankID.TabIndex = 13;
+            this.lbBankID.Visible = false;
             // 
             // frmAddBudget
             // 
@@ -262,5 +284,7 @@
         private System.Windows.Forms.ComboBox cbBank;
         private System.Windows.Forms.TextBox tbBudgetID;
         private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.ComboBox cbCatID;
+        private System.Windows.Forms.ListBox lbBankID;
     }
 }

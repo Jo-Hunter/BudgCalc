@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using BudgCalc;
+using BudgCalc.Data_Access_Layer;
+using System.Data.SqlClient;
+using BudgCalc.Business_Layer;
 
 namespace BudgCalc.Presentation_Layer
 {
@@ -55,8 +57,40 @@ namespace BudgCalc.Presentation_Layer
 
         private void FillComboBoxes()
         {
-            // TODO
-            // get the source names and fill combobox
+            string comboSourceQuery = "SELECT * from Sources";
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+
+            try
+            {
+                // Open connection.
+                conn.Open();
+                // Init SqlCommand method with query and connection.
+                SqlCommand cmd = new SqlCommand(comboSourceQuery, conn);
+                // Init reader.
+                SqlDataReader sdr = cmd.ExecuteReader();
+                // Loop through each row.
+                while (sdr.Read())
+                {
+                    // Create and populate new Source object.
+                    Source sour = new Source(int.Parse(sdr["SourceID"].ToString()), sdr["SourceName"].ToString());
+                    // Add data to combobox and associated listbox.
+                    cbBank.Items.Add(sour.SourceName);
+                    lbBankID.Items.Add(sour.SourceID.ToString());
+
+                }
+                // If the reader was opened, close it.
+                if (sdr != null)
+                {
+                    sdr.Close();
+                }
+
+                // Close connection.
+                conn.Close();
+            }
+            catch (Exception ex) // For fill comboboxes.
+            {
+                MessageBox.Show("Unsuccessful " + ex);
+            }
         }
 
         private void FillBudgetFieldsWithCurrent()
