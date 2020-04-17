@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using BudgCalc.Data_Access_Layer;
+using BudgCalc.Business_Layer;
+using System.Data.SqlClient;
 
 namespace BudgCalc.Presentation_Layer
 {
@@ -54,12 +57,56 @@ namespace BudgCalc.Presentation_Layer
 
         private void FillComboBoxes()
         {
-            // TODO
+            string comboQuery = "SELECT * FROM Sources";
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+
+            try
+            {
+                // Open connection.
+                conn.Open();
+                // Init SqlCommand method with query and connection.
+                SqlCommand cmd = new SqlCommand(comboQuery, conn);
+                // Init reader.
+                SqlDataReader sdr = cmd.ExecuteReader();
+                // Loop through each row.
+                while (sdr.Read())
+                {
+                    // Create and populate new Source object.
+                    Source sour = new Source(int.Parse(sdr["SourceID"].ToString()), sdr["SourceName"].ToString());
+
+                    // Add data to combobox and associated listbox.
+                    cbBankID.Items.Add(sour.SourceID); 
+                    cbBank.Items.Add(sour.SourceName);
+                }
+                // If the reader was opened, close it.
+                if (sdr != null)
+                {
+                    sdr.Close();
+                }
+
+                // Close connection.
+                conn.Close();
+            }
+            catch (Exception ex) // For fill comboboxes.
+            {
+                MessageBox.Show("Unsuccessful " + ex);
+            }
         }
 
         private void FillSourceFieldsWithCurrent()
         {
             // TODO add new data into db
+        }
+
+        private void cbBank_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            //int index = cbBank.SelectedIndex; // accurate
+            //cbBankID.SelectedItem = index;
+            //MessageBox.Show("the index is " + index + " so the item is: " + cbBankID.SelectedItem.ToString());
+            //txtSourceID.Text = cbBankID.SelectedItem.ToString();
+
+            // TODO use the second combobox to store and display ID numbers
+
         }
     }
 }

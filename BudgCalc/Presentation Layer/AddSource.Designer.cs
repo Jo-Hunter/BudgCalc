@@ -38,7 +38,8 @@
             this.btnSourceCancel = new System.Windows.Forms.Button();
             this.btnSourceAdd = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtSource = new System.Windows.Forms.TextBox();
+            this.cbBank = new System.Windows.Forms.ComboBox();
+            this.cbBankID = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -72,7 +73,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtSource);
+            this.groupBox2.Controls.Add(this.cbBankID);
+            this.groupBox2.Controls.Add(this.cbBank);
             this.groupBox2.Controls.Add(this.lblSource);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(27, 89);
@@ -139,12 +141,23 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "groupBox5";
             // 
-            // txtSource
+            // cbBank
             // 
-            this.txtSource.Location = new System.Drawing.Point(97, 53);
-            this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(194, 20);
-            this.txtSource.TabIndex = 2;
+            this.cbBank.FormattingEnabled = true;
+            this.cbBank.Location = new System.Drawing.Point(98, 60);
+            this.cbBank.Name = "cbBank";
+            this.cbBank.Size = new System.Drawing.Size(193, 21);
+            this.cbBank.TabIndex = 5;
+            this.cbBank.SelectionChangeCommitted += new System.EventHandler(this.cbBank_SelectionChangeCommitted);
+            // 
+            // cbBankID
+            // 
+            this.cbBankID.FormattingEnabled = true;
+            this.cbBankID.Location = new System.Drawing.Point(116, 96);
+            this.cbBankID.Name = "cbBankID";
+            this.cbBankID.Size = new System.Drawing.Size(175, 21);
+            this.cbBankID.TabIndex = 6;
+            this.cbBankID.Visible = false;
             // 
             // frmAddSource
             // 
@@ -178,6 +191,7 @@
         private System.Windows.Forms.TextBox txtSourceID;
         private System.Windows.Forms.Label lblSourceID;
         private System.Windows.Forms.Label lblSource;
-        private System.Windows.Forms.TextBox txtSource;
+        private System.Windows.Forms.ComboBox cbBank;
+        private System.Windows.Forms.ComboBox cbBankID;
     }
 }
