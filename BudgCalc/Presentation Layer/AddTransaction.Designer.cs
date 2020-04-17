@@ -32,20 +32,22 @@
             this.txtTransID = new System.Windows.Forms.TextBox();
             this.lblTransID = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.rbDebit = new System.Windows.Forms.RadioButton();
+            this.rbCredit = new System.Windows.Forms.RadioButton();
+            this.lblCategory = new System.Windows.Forms.Label();
+            this.lblCredit = new System.Windows.Forms.Label();
+            this.cbSource = new System.Windows.Forms.ComboBox();
+            this.lblSource = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblDate = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddTrans = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.lblSource = new System.Windows.Forms.Label();
-            this.cbSource = new System.Windows.Forms.ComboBox();
-            this.lblCredit = new System.Windows.Forms.Label();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.rbCredit = new System.Windows.Forms.RadioButton();
-            this.rbDebit = new System.Windows.Forms.RadioButton();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.lbSourceID = new System.Windows.Forms.ListBox();
+            this.lbCatID = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -79,6 +81,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbCatID);
+            this.groupBox2.Controls.Add(this.lbSourceID);
             this.groupBox2.Controls.Add(this.cbCategory);
             this.groupBox2.Controls.Add(this.rbDebit);
             this.groupBox2.Controls.Add(this.rbCredit);
@@ -95,6 +99,87 @@
             this.groupBox2.Size = new System.Drawing.Size(377, 214);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(119, 179);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(200, 21);
+            this.cbCategory.TabIndex = 11;
+            // 
+            // rbDebit
+            // 
+            this.rbDebit.AutoSize = true;
+            this.rbDebit.Location = new System.Drawing.Point(235, 144);
+            this.rbDebit.Name = "rbDebit";
+            this.rbDebit.Size = new System.Drawing.Size(50, 17);
+            this.rbDebit.TabIndex = 10;
+            this.rbDebit.TabStop = true;
+            this.rbDebit.Text = "Debit";
+            this.rbDebit.UseVisualStyleBackColor = true;
+            // 
+            // rbCredit
+            // 
+            this.rbCredit.AutoSize = true;
+            this.rbCredit.Location = new System.Drawing.Point(119, 144);
+            this.rbCredit.Name = "rbCredit";
+            this.rbCredit.Size = new System.Drawing.Size(52, 17);
+            this.rbCredit.TabIndex = 9;
+            this.rbCredit.TabStop = true;
+            this.rbCredit.Text = "Credit";
+            this.rbCredit.UseVisualStyleBackColor = true;
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(30, 179);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(52, 13);
+            this.lblCategory.TabIndex = 8;
+            this.lblCategory.Text = "Category:";
+            // 
+            // lblCredit
+            // 
+            this.lblCredit.AutoSize = true;
+            this.lblCredit.Location = new System.Drawing.Point(31, 144);
+            this.lblCredit.Name = "lblCredit";
+            this.lblCredit.Size = new System.Drawing.Size(37, 13);
+            this.lblCredit.TabIndex = 7;
+            this.lblCredit.Text = "Credit:";
+            // 
+            // cbSource
+            // 
+            this.cbSource.FormattingEnabled = true;
+            this.cbSource.Location = new System.Drawing.Point(119, 107);
+            this.cbSource.Name = "cbSource";
+            this.cbSource.Size = new System.Drawing.Size(201, 21);
+            this.cbSource.TabIndex = 6;
+            // 
+            // lblSource
+            // 
+            this.lblSource.AutoSize = true;
+            this.lblSource.Location = new System.Drawing.Point(30, 107);
+            this.lblSource.Name = "lblSource";
+            this.lblSource.Size = new System.Drawing.Size(44, 13);
+            this.lblSource.TabIndex = 5;
+            this.lblSource.Text = "Source:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(119, 19);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 67);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Amount:";
             // 
             // txtAmount
             // 
@@ -142,86 +227,23 @@
             this.btnAddTrans.Text = "Add";
             this.btnAddTrans.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lbSourceID
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 67);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Amount:";
+            this.lbSourceID.FormattingEnabled = true;
+            this.lbSourceID.Location = new System.Drawing.Point(327, 107);
+            this.lbSourceID.Name = "lbSourceID";
+            this.lbSourceID.Size = new System.Drawing.Size(50, 30);
+            this.lbSourceID.TabIndex = 12;
+            this.lbSourceID.Visible = false;
             // 
-            // dateTimePicker1
+            // lbCatID
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(119, 19);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 4;
-            // 
-            // lblSource
-            // 
-            this.lblSource.AutoSize = true;
-            this.lblSource.Location = new System.Drawing.Point(30, 107);
-            this.lblSource.Name = "lblSource";
-            this.lblSource.Size = new System.Drawing.Size(44, 13);
-            this.lblSource.TabIndex = 5;
-            this.lblSource.Text = "Source:";
-            // 
-            // cbSource
-            // 
-            this.cbSource.FormattingEnabled = true;
-            this.cbSource.Location = new System.Drawing.Point(119, 107);
-            this.cbSource.Name = "cbSource";
-            this.cbSource.Size = new System.Drawing.Size(201, 21);
-            this.cbSource.TabIndex = 6;
-            // 
-            // lblCredit
-            // 
-            this.lblCredit.AutoSize = true;
-            this.lblCredit.Location = new System.Drawing.Point(31, 144);
-            this.lblCredit.Name = "lblCredit";
-            this.lblCredit.Size = new System.Drawing.Size(37, 13);
-            this.lblCredit.TabIndex = 7;
-            this.lblCredit.Text = "Credit:";
-            // 
-            // lblCategory
-            // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(30, 179);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(52, 13);
-            this.lblCategory.TabIndex = 8;
-            this.lblCategory.Text = "Category:";
-            // 
-            // rbCredit
-            // 
-            this.rbCredit.AutoSize = true;
-            this.rbCredit.Location = new System.Drawing.Point(119, 144);
-            this.rbCredit.Name = "rbCredit";
-            this.rbCredit.Size = new System.Drawing.Size(52, 17);
-            this.rbCredit.TabIndex = 9;
-            this.rbCredit.TabStop = true;
-            this.rbCredit.Text = "Credit";
-            this.rbCredit.UseVisualStyleBackColor = true;
-            // 
-            // rbDebit
-            // 
-            this.rbDebit.AutoSize = true;
-            this.rbDebit.Location = new System.Drawing.Point(235, 144);
-            this.rbDebit.Name = "rbDebit";
-            this.rbDebit.Size = new System.Drawing.Size(50, 17);
-            this.rbDebit.TabIndex = 10;
-            this.rbDebit.TabStop = true;
-            this.rbDebit.Text = "Debit";
-            this.rbDebit.UseVisualStyleBackColor = true;
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(119, 179);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(200, 21);
-            this.cbCategory.TabIndex = 11;
+            this.lbCatID.FormattingEnabled = true;
+            this.lbCatID.Location = new System.Drawing.Point(327, 179);
+            this.lbCatID.Name = "lbCatID";
+            this.lbCatID.Size = new System.Drawing.Size(50, 30);
+            this.lbCatID.TabIndex = 13;
+            this.lbCatID.Visible = false;
             // 
             // frmAddTrans
             // 
@@ -263,5 +285,7 @@
         private System.Windows.Forms.RadioButton rbCredit;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Label lblCredit;
+        private System.Windows.Forms.ListBox lbCatID;
+        private System.Windows.Forms.ListBox lbSourceID;
     }
 }

@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using BudgCalc.Business_Layer;
+using BudgCalc.Data_Access_Layer;
 
 namespace BudgCalc.Presentation_Layer
 {
@@ -53,7 +56,76 @@ namespace BudgCalc.Presentation_Layer
 
         private void FillComboBoxes()
         {
-            // TODO
+            string comboSourceQuery = "SELECT * from Sources";
+            string comboCatQuery = "SELECT * FROM Categories";
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+
+            try
+            {
+                // Open connection.
+                conn.Open();
+                // Init SqlCommand method with query and connection.
+                SqlCommand cmd = new SqlCommand(comboSourceQuery, conn);
+                // Init reader.
+                SqlDataReader sdr = cmd.ExecuteReader();
+                // Loop through each row.
+                while (sdr.Read())
+                {
+                    // Create and populate new Source object.
+                    Source sour = new Source(int.Parse(sdr["SourceID"].ToString()), sdr["SourceName"].ToString());
+                    // Add data to combobox and associated listbox.
+                    cbSource.Items.Add(sour.SourceName);
+                    lbSourceID.Items.Add(sour.SourceID.ToString());
+
+                }
+                // If the reader was opened, close it.
+                if (sdr != null)
+                {
+                    sdr.Close();
+                }
+
+                // Close connection.
+                conn.Close();
+            }
+            catch (Exception ex) // For fill comboboxes.
+            {
+                MessageBox.Show("Unsuccessful " + ex);
+            }
+            try
+            {
+                // Open connection.
+                conn.Open();
+                // Init SqlCommand method with query and connection.
+                SqlCommand cmd = new SqlCommand(comboCatQuery, conn);
+                // Init reader.
+                SqlDataReader sdr = cmd.ExecuteReader();
+                // Loop through each row.
+                while (sdr.Read())
+                {
+                    // Create and populate new Category object.
+                    Category cat = new Category();
+                    //cat.SourceID = 
+                    cat.CategoryID = int.Parse(sdr["CategoryID"].ToString());
+                    cat.CategoryName = sdr["CategoryName"].ToString();
+                    //Source sour = new Source(int.Parse(sdr["SourceID"].ToString()), sdr["SourceName"].ToString());
+                    // Add data to combobox and associated listbox.
+                    cbCategory.Items.Add(cat.CategoryName);
+                    lbCatID.Items.Add(cat.CategoryID);
+
+                }
+                // If the reader was opened, close it.
+                if (sdr != null)
+                {
+                    sdr.Close();
+                }
+
+                // Close connection.
+                conn.Close();
+            }
+            catch (Exception ex) // For fill comboboxes.
+            {
+                MessageBox.Show("Unsuccessful " + ex);
+            }
         }
 
         private void FillTransactionFieldsWithCurrent()
