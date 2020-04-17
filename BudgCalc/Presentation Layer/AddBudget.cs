@@ -58,6 +58,7 @@ namespace BudgCalc.Presentation_Layer
         private void FillComboBoxes()
         {
             string comboSourceQuery = "SELECT * from Sources";
+            string comboCatQuery = "SELECT * FROM Categories";
             SqlConnection conn = ConnectionManager.DatabaseConnection();
 
             try
@@ -77,6 +78,40 @@ namespace BudgCalc.Presentation_Layer
                     cbBank.Items.Add(sour.SourceName);
                     lbBankID.Items.Add(sour.SourceID.ToString());
 
+                }
+                // If the reader was opened, close it.
+                if (sdr != null)
+                {
+                    sdr.Close();
+                }
+
+                // Close connection.
+                conn.Close();
+            }
+            catch (Exception ex) // For fill comboboxes.
+            {
+                MessageBox.Show("Unsuccessful " + ex);
+            }
+            try
+            {
+                // Open connection.
+                conn.Open();
+                // Init SqlCommand method with query and connection.
+                SqlCommand cmd = new SqlCommand(comboCatQuery, conn);
+                // Init reader.
+                SqlDataReader sdr = cmd.ExecuteReader();
+                // Loop through each row.
+                while (sdr.Read())
+                {
+                    // Create and populate new Category object.
+                    Category cat = new Category();
+                    //cat.SourceID = 
+                    cat.CategoryID = int.Parse(sdr["CategoryID"].ToString());
+                    cat.CategoryName = sdr["CategoryName"].ToString();
+                    //Source sour = new Source(int.Parse(sdr["SourceID"].ToString()), sdr["SourceName"].ToString());
+                    // Add data to combobox and associated listbox.
+                    cbCategory.Items.Add(cat.CategoryName);
+                    cbCatID.Items.Add(cat.CategoryID);
                 }
                 // If the reader was opened, close it.
                 if (sdr != null)
