@@ -107,5 +107,25 @@ namespace BudgCalc.Presentation_Layer
             ab.Show();
 
         }
+
+        private void lvCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // none
+        }
+
+        private void lvCategories_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            // Is a customer selected? Change AddUpdate button to reflect that.
+            if (lvCategories.SelectedItems.Count > 0)
+            {
+                btnAdd.Text = "&Update";
+
+            }
+            else
+            {
+                btnAdd.Text = "&Add";
+
+            }
+        }
     }
 }

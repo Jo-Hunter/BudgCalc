@@ -100,5 +100,20 @@ namespace BudgCalc.Presentation_Layer
             source.ShowDialog();
 
         }
+
+        private void lvSource_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            // Is a customer selected? Change AddUpdate button to reflect that.
+            if (lvSource.SelectedItems.Count > 0)
+            {
+                btnSourceAdd.Text = "&Update";
+
+            }
+            else
+            {
+                btnSourceAdd.Text = "&Add";
+
+            }
+        }
     }
 }

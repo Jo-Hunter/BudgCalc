@@ -34,10 +34,10 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lvCategories
@@ -55,6 +55,8 @@
             this.lvCategories.TabIndex = 0;
             this.lvCategories.UseCompatibleStateImageBehavior = false;
             this.lvCategories.View = System.Windows.Forms.View.Details;
+            this.lvCategories.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvCategories_ItemSelectionChanged);
+            this.lvCategories.SelectedIndexChanged += new System.EventHandler(this.lvCategories_SelectedIndexChanged);
             // 
             // columnHeader4
             // 
@@ -77,6 +79,11 @@
             // 
             this.columnHeader5.Text = "Purpose";
             this.columnHeader5.Width = 120;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Credit/Debit";
+            this.columnHeader6.Width = 90;
             // 
             // btnAdd
             // 
@@ -106,11 +113,6 @@
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Credit/Debit";
-            this.columnHeader6.Width = 90;
             // 
             // frmPlan
             // 

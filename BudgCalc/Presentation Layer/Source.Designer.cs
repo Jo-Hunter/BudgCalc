@@ -58,6 +58,7 @@
             this.lvSource.TabIndex = 1;
             this.lvSource.UseCompatibleStateImageBehavior = false;
             this.lvSource.View = System.Windows.Forms.View.Details;
+            this.lvSource.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvSource_ItemSelectionChanged);
             // 
             // columnHeader1
             // 
