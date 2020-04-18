@@ -83,6 +83,19 @@ namespace BudgCalc.Presentation_Layer
 
         private void btnSourceAdd_Click(object sender, EventArgs e)
         {
+
+            try
+            {
+                int test = int.Parse(lvSource.SelectedItems[0].Text);
+                Global_Variable.sourceID = test;
+
+
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Global_Variable.sourceID = 0;
+            }
+
             frmAddSource source = new frmAddSource();
             source.ShowDialog();
 

@@ -91,6 +91,18 @@ namespace BudgCalc.Presentation_Layer
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int test = int.Parse(lvCategories.SelectedItems[0].Text);
+               
+                Global_Variable.budgetID = test;
+
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Global_Variable.budgetID = 0;
+            }
+
             frmAddBudget ab = new frmAddBudget();
             ab.Show();
 
