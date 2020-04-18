@@ -146,13 +146,30 @@ namespace BudgCalc.Presentation_Layer
                 // Loop through each row.
                 while (sdr.Read())
                 {
-                    
-                    dateTimePicker1.Text = sdr["TransDate"].ToString();
-                    txtAmount.Text = sdr["Amount"].ToString();
-                    txtTransID.Text = sdr["TransactionID"].ToString();
-                    lbCatID.Text = sdr["CategoryID"].ToString();
-                    lbSourceID.Text = sdr["SourceID"].ToString();
-                    if (bool.Parse(sdr["CreditDebit"].ToString()))
+
+                    Transaction tn = new Transaction();
+                    tn.TransactionID = int.Parse(sdr["TransactionID"].ToString());
+                    tn.TransDate = DateTime.Parse(sdr["TransDate"].ToString());
+                    tn.SourceID = int.Parse(sdr["SourceID"].ToString());
+                    tn.Amount = double.Parse(sdr["Amount"].ToString());
+                    tn.CategoryID = int.Parse(sdr["CategoryID"].ToString());
+                    tn.IsCredit = bool.Parse(sdr["CreditDebit"].ToString());
+
+                    dateTimePicker1.Text = tn.TransDate.ToString();
+                    txtAmount.Text = tn.Amount.ToString();
+                    txtTransID.Text = tn.TransactionID.ToString();
+                    lbCatID.Text = tn.CategoryID.ToString();
+                    lbSourceID.Text = tn.SourceID.ToString();
+                    //if (bool.Parse(sdr["CreditDebit"].ToString()))
+                    //{
+                    //    rbCredit.Checked = true;
+                    //}
+                    //else
+                    //{
+                    //    rbDebit.Checked = true;
+                    //}
+
+                    if (tn.IsCredit)
                     {
                         rbCredit.Checked = true;
                     }
