@@ -72,7 +72,18 @@ namespace BudgCalc.Presentation_Layer
                 }
 
                 // TODO update
-                string addQuery = "sp_Sources_AddSource";
+                string addQuery;
+                if (Global_Variable.sourceID == 0)
+                {
+                    addQuery = "sp_Sources_AddSource";
+                }
+                else
+                {
+                    addQuery = "sp_Sources_UpdateSources";
+                }
+
+
+
 
                 // prepare connection, open, prepare SqlCommand.
                 SqlConnection conn = ConnectionManager.DatabaseConnection();
@@ -81,19 +92,18 @@ namespace BudgCalc.Presentation_Layer
                 // Tell program to use stored procedures.
                 cmd.CommandType = CommandType.StoredProcedure;
                 // If updating a customer, add ID as a parametre.
-               
-                //if (GlobalVariable.selectedCustomerID != 0)
-                //{
-                //    cmd.Parameters.AddWithValue("@CustomerID", cust.CustomerId);
-                //}
-                // Add parametres.
+                if (Global_Variable.sourceID != 0) 
+                {
+                    cmd.Parameters.AddWithValue("@SourceID", sour.SourceID);
+                }
+                //Add parametres.
                 cmd.Parameters.AddWithValue("@SourceName", sour.SourceName);
-                
+
                 // If new customer, get the output.
-                //if (GlobalVariable.selectedCustomerID == 0)
-                //{
+                if(Global_Variable.sourceID == 0)
+                {
                     cmd.Parameters.AddWithValue("@NewSourceID", SqlDbType.Int).Direction = ParameterDirection.Output;
-                //}
+                }
                 // Use transactions to call database.
                 cmd.Transaction = conn.BeginTransaction();
                 cmd.ExecuteNonQuery();

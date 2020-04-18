@@ -21,7 +21,7 @@ namespace BudgCalc
         public static int currentPeriod;
         public static int budgetID;
         public static int transactionID;
-        public static int sourceID;
+        public static int sourceID = 0;
 
     }
 }
