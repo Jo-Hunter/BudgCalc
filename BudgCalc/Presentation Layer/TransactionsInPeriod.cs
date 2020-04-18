@@ -32,6 +32,19 @@ namespace BudgCalc.Presentation_Layer
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+
+            try
+            {
+                int test = int.Parse(lvTransactions.SelectedItems[0].Text);
+                Global_Variable.transactionID = test;
+
+               
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+               Global_Variable.transactionID = 0;
+            }
+
             frmAddTrans ad = new frmAddTrans();
             ad.ShowDialog();
         }
@@ -120,6 +133,21 @@ namespace BudgCalc.Presentation_Layer
             {
                 // If something goes wrong, show the stack.
                 MessageBox.Show("Unsuccessful " + ex);
+            }
+        }
+
+        private void lvTransactions_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            // Is a customer selected? Change AddUpdate button to reflect that.
+            if (lvTransactions.SelectedItems.Count > 0)
+            {
+                btnUpdate.Text = "&Update";
+                
+            }
+            else
+            {
+                btnUpdate.Text = "&Add";
+                
             }
         }
     }

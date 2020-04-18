@@ -56,6 +56,7 @@
             this.lvTransactions.TabIndex = 0;
             this.lvTransactions.UseCompatibleStateImageBehavior = false;
             this.lvTransactions.View = System.Windows.Forms.View.Details;
+            this.lvTransactions.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvTransactions_ItemSelectionChanged);
             // 
             // columnHeader1
             // 
@@ -90,7 +91,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(132, 23);
             this.btnUpdate.TabIndex = 1;
-            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Text = "Add";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 

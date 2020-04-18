@@ -152,9 +152,13 @@ namespace BudgCalc.Presentation_Layer
                     txtTransID.Text = sdr["TransactionID"].ToString();
                     lbCatID.Text = sdr["CategoryID"].ToString();
                     lbSourceID.Text = sdr["SourceID"].ToString();
-                    if (int.Parse(sdr["CreditDebit"].ToString()) == 0)
+                    if (bool.Parse(sdr["CreditDebit"].ToString()))
                     {
                         rbCredit.Checked = true;
+                    }
+                    else
+                    {
+                        rbDebit.Checked = true;
                     }
                 }
                 // If the reader was opened, close it.
