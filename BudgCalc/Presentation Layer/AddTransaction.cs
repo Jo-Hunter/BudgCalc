@@ -130,7 +130,7 @@ namespace BudgCalc.Presentation_Layer
 
         private void FillTransactionFieldsWithCurrent()
         {
-            // TODO use lb to get value of cb
+           
             // TODO error if there is no date. Shouldn't be an issue, it's only an issue because 
             // I added it later.
 
@@ -156,6 +156,7 @@ namespace BudgCalc.Presentation_Layer
                     tn.Amount = double.Parse(sdr["Amount"].ToString());
                     tn.CategoryID = int.Parse(sdr["CategoryID"].ToString());
                     tn.IsCredit = bool.Parse(sdr["CreditDebit"].ToString());
+                    
 
                     dateTimePicker1.Text = tn.TransDate.ToString();
                     txtAmount.Text = tn.Amount.ToString();
@@ -163,6 +164,10 @@ namespace BudgCalc.Presentation_Layer
                     lbCatID.Text = tn.CategoryID.ToString();
                     lbSourceID.Text = tn.SourceID.ToString();
                     
+                    
+                    tn.CategoryName = cbCategory.Items[lbCatID.SelectedIndex].ToString();
+                    cbCategory.Text = tn.CategoryName;
+                    cbSource.Text = cbSource.Items[lbSourceID.SelectedIndex].ToString();
 
                     if (tn.IsCredit)
                     {
@@ -241,9 +246,10 @@ namespace BudgCalc.Presentation_Layer
                 }
                 tn.TransDate = DateTime.Parse(dateTimePicker1.Text);
                 tn.SourceID = int.Parse(lbSourceID.Items[cbSource.SelectedIndex].ToString());
+                tn.CategoryID = int.Parse(lbCatID.Items[cbCategory.SelectedIndex].ToString());
 
                 // TEMPLATE int.Parse(lbType.Items[cbType.SelectedIndex].ToString())
-               
+
                 tn.CategoryName = cbCategory.Text;
                 if (rbCredit.Checked)
                 {
@@ -265,7 +271,7 @@ namespace BudgCalc.Presentation_Layer
                 }
                 else
                 {
-                    addQuery = "sp_Transactions_UpdateTransactions";
+                    addQuery = "sp_Transactions_UpdateTransaction";
                 }
                 // prepare connection, open, prepare SqlCommand.
                 SqlConnection conn = ConnectionManager.DatabaseConnection();

@@ -33,6 +33,9 @@ namespace BudgCalc.Presentation_Layer
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
+
+
+
             try
             {
                 int test = int.Parse(lvTransactions.SelectedItems[0].Text);
@@ -47,6 +50,11 @@ namespace BudgCalc.Presentation_Layer
 
             frmAddTrans ad = new frmAddTrans();
             ad.ShowDialog();
+
+            lvTransactions.Items.Clear();
+            DisplayTransactions();
+
+
         }
 
         private void frmTransPeriod_Load(object sender, EventArgs e)
@@ -57,7 +65,7 @@ namespace BudgCalc.Presentation_Layer
         private void DisplayTransactions()
         {
 
-            // TODO date is all wrong...
+           // TODO date has a problem formatting
             // TODO needs formatting badly
 
             string query = "SELECT * from Transactions";
