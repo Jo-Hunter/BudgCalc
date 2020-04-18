@@ -200,7 +200,7 @@ namespace BudgCalc.Presentation_Layer
             // this update is tricky because it will adjust totals. 
             // TODO once done the totals will need to revisit
 
-            bool isValid;
+            bool isValid = false;
             if (string.IsNullOrEmpty(dateTimePicker1.Text))
             {
                 MessageBox.Show("Please select a date");
@@ -229,6 +229,11 @@ namespace BudgCalc.Presentation_Layer
             {
                 MessageBox.Show("Please choose whether this earning or spending money.");
                 isValid = false;
+            }
+
+            if (isValid)
+            {
+
             }
         }
     }

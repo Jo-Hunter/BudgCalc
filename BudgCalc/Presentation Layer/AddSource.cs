@@ -64,6 +64,44 @@ namespace BudgCalc.Presentation_Layer
             }
             else // Valid
             {
+                Source sour = new Source();
+                sour.SourceName = cbBank.Text;
+                if (!string.IsNullOrEmpty(txtSourceID.Text))
+                {
+                    sour.SourceID = int.Parse(txtSourceID.Text);
+                }
+
+                // TODO update
+                string addQuery = "sp_Sources_AddSource";
+
+                // prepare connection, open, prepare SqlCommand.
+                SqlConnection conn = ConnectionManager.DatabaseConnection();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(addQuery, conn);
+                // Tell program to use stored procedures.
+                cmd.CommandType = CommandType.StoredProcedure;
+                // If updating a customer, add ID as a parametre.
+               
+                //if (GlobalVariable.selectedCustomerID != 0)
+                //{
+                //    cmd.Parameters.AddWithValue("@CustomerID", cust.CustomerId);
+                //}
+                // Add parametres.
+                cmd.Parameters.AddWithValue("@SourceName", sour.SourceName);
+                
+                // If new customer, get the output.
+                //if (GlobalVariable.selectedCustomerID == 0)
+                //{
+                    cmd.Parameters.AddWithValue("@NewSourceID", SqlDbType.Int).Direction = ParameterDirection.Output;
+                //}
+                // Use transactions to call database.
+                cmd.Transaction = conn.BeginTransaction();
+                cmd.ExecuteNonQuery();
+                cmd.Transaction.Commit();
+                // Close connection.
+                conn.Close();
+                // Close window.
+                this.Close();
 
             }
        

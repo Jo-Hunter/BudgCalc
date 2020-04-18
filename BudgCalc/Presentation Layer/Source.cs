@@ -99,6 +99,9 @@ namespace BudgCalc.Presentation_Layer
             frmAddSource source = new frmAddSource();
             source.ShowDialog();
 
+            lvSource.Items.Clear();
+            DisplaySource();
+
         }
 
         private void lvSource_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)

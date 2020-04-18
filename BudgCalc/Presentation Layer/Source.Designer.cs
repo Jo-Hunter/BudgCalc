@@ -67,6 +67,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "source";
+            this.columnHeader2.Width = 130;
             // 
             // btnSourceAdd
             // 
