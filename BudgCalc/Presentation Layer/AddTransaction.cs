@@ -200,7 +200,7 @@ namespace BudgCalc.Presentation_Layer
             // this update is tricky because it will adjust totals. 
             // TODO once done the totals will need to revisit
 
-            bool isValid = false;
+            bool isValid = true;
             if (string.IsNullOrEmpty(dateTimePicker1.Text))
             {
                 MessageBox.Show("Please select a date");
@@ -233,6 +233,73 @@ namespace BudgCalc.Presentation_Layer
 
             if (isValid)
             {
+                Transaction tn = new Transaction();
+                tn.Amount = int.Parse(txtAmount.Text);
+                if (!string.IsNullOrEmpty(txtTransID.Text))
+                {
+                    tn.TransactionID = int.Parse(txtTransID.Text);
+                }
+                tn.TransDate = DateTime.Parse(dateTimePicker1.Text);
+                tn.SourceID = int.Parse(lbSourceID.Items[cbSource.SelectedIndex].ToString());
+
+                // TEMPLATE int.Parse(lbType.Items[cbType.SelectedIndex].ToString())
+               
+                tn.CategoryName = cbCategory.Text;
+                if (rbCredit.Checked)
+                {
+                    tn.IsCredit = true;
+                }
+                else
+                {
+                    tn.IsCredit = false;
+                }
+
+
+                //MessageBox.Show("what is the source ID? " + tn.SourceID.ToString());
+
+                // Put appropriate stored proc depending on whether new or updated transaction.
+                string addQuery;
+                if (Global_Variable.transactionID == 0)
+                {
+                    addQuery = "sp_Transactions_AddTransaction";
+                }
+                else
+                {
+                    addQuery = "sp_Transactions_UpdateTransactions";
+                }
+                // prepare connection, open, prepare SqlCommand.
+                SqlConnection conn = ConnectionManager.DatabaseConnection();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(addQuery, conn);
+                // Tell program to use stored procedures.
+                cmd.CommandType = CommandType.StoredProcedure;
+                // If updating a customer, add ID as a parametre.
+                if (Global_Variable.transactionID != 0)
+                {
+                    cmd.Parameters.AddWithValue("@TransactionID", tn.TransactionID);
+                }
+                // Add parametres.
+                cmd.Parameters.AddWithValue("@CategoryID", tn.CategoryID);
+                cmd.Parameters.AddWithValue("@Period", Global_Variable.currentPeriod);
+                cmd.Parameters.AddWithValue("@SourceID", tn.SourceID);
+                cmd.Parameters.AddWithValue("@Amount", tn.Amount);
+                cmd.Parameters.AddWithValue("@CreditDebit", tn.IsCredit);
+                cmd.Parameters.AddWithValue("@TransDate", tn.TransDate);
+
+                // If new customer, get the output.
+                if (Global_Variable.transactionID == 0)
+                {
+                    cmd.Parameters.AddWithValue("@NewTransactionID", SqlDbType.Int).Direction = ParameterDirection.Output;
+                }
+                // Use transactions to call database.
+                cmd.Transaction = conn.BeginTransaction();
+                cmd.ExecuteNonQuery();
+                cmd.Transaction.Commit();
+                // Close connection.
+                conn.Close();
+                // Close window.
+                this.Close();
+
 
             }
         }
