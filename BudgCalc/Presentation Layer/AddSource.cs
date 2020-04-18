@@ -75,7 +75,7 @@ namespace BudgCalc.Presentation_Layer
                     Source sour = new Source(int.Parse(sdr["SourceID"].ToString()), sdr["SourceName"].ToString());
 
                     // Add data to combobox and associated listbox.
-                    cbBankID.Items.Add(sour.SourceID); 
+                    //cbBankID.Items.Add(sour.SourceID); 
                     cbBank.Items.Add(sour.SourceName);
                 }
                 // If the reader was opened, close it.
@@ -95,7 +95,40 @@ namespace BudgCalc.Presentation_Layer
 
         private void FillSourceFieldsWithCurrent()
         {
-            // TODO add new data into db
+            // TODO use lb to get value of cb
+
+            string getTrans = "SELECT * FROM Sources WHERE SourceID = " + Global_Variable.sourceID;
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+            try
+            {
+
+                // Open connection.
+                conn.Open();
+                // Init SqlCommand method with query and connection.
+                SqlCommand cmd = new SqlCommand(getTrans, conn);
+                // Init reader.
+                SqlDataReader sdr = cmd.ExecuteReader();
+                // Loop through each row.
+                while (sdr.Read())
+                {
+
+                    cbBank.Text = sdr["SourceName"].ToString();
+                    txtSourceID.Text = sdr["SourceID"].ToString();
+                    
+                }
+                // If the reader was opened, close it.
+                if (sdr != null)
+                {
+                    sdr.Close();
+                }
+
+                // Close connection.
+                conn.Close();
+            }
+            catch (Exception ex) // For fill comboboxes.
+            {
+                MessageBox.Show("Unsuccessful " + ex);
+            }
         }
 
         private void cbBank_SelectionChangeCommitted(object sender, EventArgs e)
