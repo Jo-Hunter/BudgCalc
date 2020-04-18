@@ -8,11 +8,17 @@ namespace BudgCalc.Business_Layer
     class Transaction
     {
 
-        private int categoryid, sourceid, period;
+        private int categoryid, sourceid, period, transactionID;
         private string categoryname, description;
         private double amount;
         private bool iscredit;
         private DateTime transdate;
+
+        public int TransactionID
+        {
+            get { return transactionID; }
+            set { transactionID = value; }
+        }
 
         public bool IsCredit
         {
@@ -64,8 +70,9 @@ namespace BudgCalc.Business_Layer
 
         public Transaction() { }
 
-        public Transaction(int categoryid, string categoryname, string description, double amount, int sourceid, int period, bool iscredit, DateTime transdate)
+        public Transaction(int transactionID, int categoryid, string categoryname, string description, double amount, int sourceid, int period, bool iscredit, DateTime transdate)
         {
+            TransactionID = transactionID;
             CategoryID = categoryid;
             CategoryName = categoryname;
             Description = description;

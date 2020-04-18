@@ -130,7 +130,46 @@ namespace BudgCalc.Presentation_Layer
 
         private void FillTransactionFieldsWithCurrent()
         {
-            // TODO
+            // TODO use lb to get value of cb
+
+            string getTrans = "SELECT * FROM Transactions WHERE TransactionID = " + Global_Variable.transactionID;
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+            try
+            {
+                
+                // Open connection.
+                conn.Open();
+                // Init SqlCommand method with query and connection.
+                SqlCommand cmd = new SqlCommand(getTrans, conn);
+                // Init reader.
+                SqlDataReader sdr = cmd.ExecuteReader();
+                // Loop through each row.
+                while (sdr.Read())
+                {
+                    
+                    dateTimePicker1.Text = sdr["TransDate"].ToString();
+                    txtAmount.Text = sdr["Amount"].ToString();
+                    txtTransID.Text = sdr["TransactionID"].ToString();
+                    lbCatID.Text = sdr["CategoryID"].ToString();
+                    lbSourceID.Text = sdr["SourceID"].ToString();
+                    if (int.Parse(sdr["CreditDebit"].ToString()) == 0)
+                    {
+                        rbCredit.Checked = true;
+                    }
+                }
+                // If the reader was opened, close it.
+                if (sdr != null)
+                {
+                    sdr.Close();
+                }
+
+                // Close connection.
+                conn.Close();
+            }
+            catch (Exception ex) // For fill comboboxes.
+            {
+                MessageBox.Show("Unsuccessful " + ex);
+            }
         }
 
         private void txtDate_TextChanged(object sender, EventArgs e)
