@@ -130,8 +130,63 @@ namespace BudgCalc.Presentation_Layer
 
         private void FillBudgetFieldsWithCurrent()
         {
-            // TODO
-            // prefill all the fields using the ID given
+            // TODO use lb to get value of cb
+            // TODO unhappy with credit/debit need to fix
+
+            tbBudgetID.Text = Global_Variable.budgetID.ToString();
+
+            string getBudget = "SELECT * FROM Categories WHERE CategoryID = " + Global_Variable.budgetID;
+
+            SqlConnection conn = ConnectionManager.DatabaseConnection();
+            try
+            {
+
+                // Open connection.
+                conn.Open();
+                // Init SqlCommand method with query and connection.
+                SqlCommand cmd = new SqlCommand(getBudget, conn);
+                // Init reader.
+                SqlDataReader sdr = cmd.ExecuteReader();
+                // Loop through each row.
+                while (sdr.Read())
+                {
+
+                    Category cat = new Category();
+                    cat.Amount = double.Parse(sdr["AssignedAmount"].ToString());
+                    cat.CategoryName = sdr["CategoryName"].ToString();
+                    cat.Description = sdr["CategoryDescription"].ToString();
+                    cat.SourceID = int.Parse(sdr["SourceID"].ToString());
+
+                    cbCategory.Text = cat.CategoryName;
+                    tbAmount.Text = cat.Amount.ToString();
+                    lbBankID.Text = cat.SourceID.ToString();
+                    tbPurpose.Text = cat.Description;
+
+                    if (cat.Amount < 0)
+                    {
+                        rbAddDebit.Checked = true;
+                    }
+                    else
+                    {
+                        rbAddCredit.Checked = true;
+                    }
+
+
+                    
+                }
+                // If the reader was opened, close it.
+                if (sdr != null)
+                {
+                    sdr.Close();
+                }
+
+                // Close connection.
+                conn.Close();
+            }
+            catch (Exception ex) // For fill comboboxes.
+            {
+                MessageBox.Show("Unsuccessful " + ex);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
