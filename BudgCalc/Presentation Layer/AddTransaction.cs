@@ -160,14 +160,7 @@ namespace BudgCalc.Presentation_Layer
                     txtTransID.Text = tn.TransactionID.ToString();
                     lbCatID.Text = tn.CategoryID.ToString();
                     lbSourceID.Text = tn.SourceID.ToString();
-                    //if (bool.Parse(sdr["CreditDebit"].ToString()))
-                    //{
-                    //    rbCredit.Checked = true;
-                    //}
-                    //else
-                    //{
-                    //    rbDebit.Checked = true;
-                    //}
+                    
 
                     if (tn.IsCredit)
                     {

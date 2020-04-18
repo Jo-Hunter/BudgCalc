@@ -97,7 +97,7 @@ namespace BudgCalc.Presentation_Layer
         {
             // TODO use lb to get value of cb
 
-            string getTrans = "SELECT * FROM Sources WHERE SourceID = " + Global_Variable.sourceID;
+            string getSource = "SELECT * FROM Sources WHERE SourceID = " + Global_Variable.sourceID;
             SqlConnection conn = ConnectionManager.DatabaseConnection();
             try
             {
@@ -105,15 +105,19 @@ namespace BudgCalc.Presentation_Layer
                 // Open connection.
                 conn.Open();
                 // Init SqlCommand method with query and connection.
-                SqlCommand cmd = new SqlCommand(getTrans, conn);
+                SqlCommand cmd = new SqlCommand(getSource, conn);
                 // Init reader.
                 SqlDataReader sdr = cmd.ExecuteReader();
                 // Loop through each row.
                 while (sdr.Read())
                 {
 
-                    cbBank.Text = sdr["SourceName"].ToString();
-                    txtSourceID.Text = sdr["SourceID"].ToString();
+                    Source sour = new Source();
+                    sour.SourceID = int.Parse(sdr["SourceID"].ToString());
+                    sour.SourceName = sdr["SourceName"].ToString();
+
+                    cbBank.Text = sour.SourceName;
+                    txtSourceID.Text = sour.SourceID.ToString();
                     
                 }
                 // If the reader was opened, close it.
