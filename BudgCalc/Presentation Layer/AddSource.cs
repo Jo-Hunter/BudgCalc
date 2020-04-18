@@ -49,10 +49,26 @@ namespace BudgCalc.Presentation_Layer
         {
             this.Close();
         }
-
+        // Add/Update button
         private void button1_Click(object sender, EventArgs e)
         {
-            // TODO
+            // TODO 
+            // validate first
+            // create sps
+            // send data
+
+            
+            if (string.IsNullOrEmpty(cbBank.Text))
+            {
+                MessageBox.Show("Please enter a source."); // working.
+            }
+            else // Valid
+            {
+
+            }
+       
+
+            
         }
 
         private void FillComboBoxes()

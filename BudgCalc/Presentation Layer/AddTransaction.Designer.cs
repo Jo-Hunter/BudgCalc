@@ -32,6 +32,8 @@
             this.txtTransID = new System.Windows.Forms.TextBox();
             this.lblTransID = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbCatID = new System.Windows.Forms.ListBox();
+            this.lbSourceID = new System.Windows.Forms.ListBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.rbDebit = new System.Windows.Forms.RadioButton();
             this.rbCredit = new System.Windows.Forms.RadioButton();
@@ -46,8 +48,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddTrans = new System.Windows.Forms.Button();
-            this.lbSourceID = new System.Windows.Forms.ListBox();
-            this.lbCatID = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -99,6 +99,24 @@
             this.groupBox2.Size = new System.Drawing.Size(377, 214);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // lbCatID
+            // 
+            this.lbCatID.FormattingEnabled = true;
+            this.lbCatID.Location = new System.Drawing.Point(327, 179);
+            this.lbCatID.Name = "lbCatID";
+            this.lbCatID.Size = new System.Drawing.Size(50, 30);
+            this.lbCatID.TabIndex = 13;
+            this.lbCatID.Visible = false;
+            // 
+            // lbSourceID
+            // 
+            this.lbSourceID.FormattingEnabled = true;
+            this.lbSourceID.Location = new System.Drawing.Point(327, 107);
+            this.lbSourceID.Name = "lbSourceID";
+            this.lbSourceID.Size = new System.Drawing.Size(50, 30);
+            this.lbSourceID.TabIndex = 12;
+            this.lbSourceID.Visible = false;
             // 
             // cbCategory
             // 
@@ -226,24 +244,7 @@
             this.btnAddTrans.TabIndex = 0;
             this.btnAddTrans.Text = "Add";
             this.btnAddTrans.UseVisualStyleBackColor = true;
-            // 
-            // lbSourceID
-            // 
-            this.lbSourceID.FormattingEnabled = true;
-            this.lbSourceID.Location = new System.Drawing.Point(327, 107);
-            this.lbSourceID.Name = "lbSourceID";
-            this.lbSourceID.Size = new System.Drawing.Size(50, 30);
-            this.lbSourceID.TabIndex = 12;
-            this.lbSourceID.Visible = false;
-            // 
-            // lbCatID
-            // 
-            this.lbCatID.FormattingEnabled = true;
-            this.lbCatID.Location = new System.Drawing.Point(327, 179);
-            this.lbCatID.Name = "lbCatID";
-            this.lbCatID.Size = new System.Drawing.Size(50, 30);
-            this.lbCatID.TabIndex = 13;
-            this.lbCatID.Visible = false;
+            this.btnAddTrans.Click += new System.EventHandler(this.btnAddTrans_Click);
             // 
             // frmAddTrans
             // 

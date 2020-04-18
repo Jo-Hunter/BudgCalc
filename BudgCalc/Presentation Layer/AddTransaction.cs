@@ -131,6 +131,8 @@ namespace BudgCalc.Presentation_Layer
         private void FillTransactionFieldsWithCurrent()
         {
             // TODO use lb to get value of cb
+            // TODO error if there is no date. Shouldn't be an issue, it's only an issue because 
+            // I added it later.
 
             string getTrans = "SELECT * FROM Transactions WHERE TransactionID = " + Global_Variable.transactionID;
             SqlConnection conn = ConnectionManager.DatabaseConnection();
@@ -189,6 +191,45 @@ namespace BudgCalc.Presentation_Layer
         private void txtDate_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddTrans_Click(object sender, EventArgs e)
+        {
+
+
+            // this update is tricky because it will adjust totals. 
+            // TODO once done the totals will need to revisit
+
+            bool isValid;
+            if (string.IsNullOrEmpty(dateTimePicker1.Text))
+            {
+                MessageBox.Show("Please select a date");
+                isValid = false;
+            }
+            if (string.IsNullOrEmpty(cbCategory.Text))
+            {
+                MessageBox.Show("Please add or select a category");
+                isValid = false;
+            }
+            if (string.IsNullOrEmpty(txtAmount.Text) || !txtAmount.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Please enter an amount in numbers only.");
+                isValid = false;
+            }
+            if (string.IsNullOrEmpty(cbSource.Text))
+            {
+                MessageBox.Show("Please add or select a source");
+                isValid = false;
+            }
+            if (rbCredit.Checked || rbDebit.Checked)
+            {
+                // nothing
+            }
+            else
+            {
+                MessageBox.Show("Please choose whether this earning or spending money.");
+                isValid = false;
+            }
         }
     }
 }

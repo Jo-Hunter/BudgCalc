@@ -196,6 +196,38 @@ namespace BudgCalc.Presentation_Layer
             // close the changed budget by adding an end date
             // and create a NEW entry with this these details.
             // in order to keep the old budget records
+
+            // First see if can delete, if never used. If never used, update. - no this is budget.
+            // if used, add date to old and create a new.
+
+            bool isValid;
+
+            if (string.IsNullOrEmpty(cbCategory.Text))
+            {
+                MessageBox.Show("Please enter or select a category.");
+                isValid = false;
+            }
+            
+            if (string.IsNullOrEmpty(tbAmount.Text) || !tbAmount.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Please enter or select a category and use numbers only.");
+                isValid = false;
+            }
+
+            if (string.IsNullOrEmpty(cbBank.Text))
+            {
+                MessageBox.Show("Please enter or select a source.");
+                isValid = false;
+            }
+            if (rbAddCredit.Checked || rbAddDebit.Checked)
+            {
+                // nothing
+            }
+            else
+            {
+                MessageBox.Show("Please choose whether this earning or spending money.");
+                isValid = false;
+            }
         }
     }
 }
