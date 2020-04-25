@@ -106,6 +106,9 @@ namespace BudgCalc.Presentation_Layer
             frmAddBudget ab = new frmAddBudget();
             ab.Show();
 
+            lvCategories.Items.Clear();
+            DisplayBudget();
+
         }
 
         private void lvCategories_SelectedIndexChanged(object sender, EventArgs e)

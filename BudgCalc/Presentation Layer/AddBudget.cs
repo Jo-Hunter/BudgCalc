@@ -26,9 +26,7 @@ namespace BudgCalc.Presentation_Layer
 
         private void frmAddBudget_Load(object sender, EventArgs e)
         {
-            // work out if add or update
-            // if add, get the sources
-            // if update, get all the fields
+            // klhsihl
 
             // Fill Combo boxes with possible data for the user to select.
             FillComboBoxes();
@@ -200,7 +198,32 @@ namespace BudgCalc.Presentation_Layer
             // First see if can delete, if never used. If never used, update. - no this is budget.
             // if used, add date to old and create a new.
 
-            bool isValid;
+
+            // NOTE: the sp for update checks to see if it has been used and if so,
+            // automatically creates a new entry instead. 
+            // However, I haven't made it enter a leavedate yet, next task.
+            // Git failed with a fatal error.
+            //fatal: Unable to create 'C:/Users/joz/documents/visual studio 2017/Projects/BudgCalc/.git/index.lock': File exists.
+
+            //Another git process seems to be running in this repository, e.g.
+            //an editor opened by 'git commit'.Please make sure all processes
+            //are terminated then try again.If it still fails, a git process
+            //may have crashed in this repository earlier:
+            //remove the file manually to continue.
+
+            // addiotnal error when I changed it file and tried again
+            //Git failed with a fatal error.
+//warning: LF will be replaced by CRLF in BudgCalc / Presentation Layer / AddBudget.cs.
+//The file will have its original line endings in your working directory.
+//fatal: Unable to create 'C:/Users/joz/documents/visual studio 2017/Projects/BudgCalc/.git/index.lock': File exists.
+
+//Another git process seems to be running in this repository, e.g.
+//an editor opened by 'git commit'.Please make sure all processes
+//are terminated then try again.If it still fails, a git process
+//may have crashed in this repository earlier:
+//remove the file manually to continue.
+
+            bool isValid = true;
 
             if (string.IsNullOrEmpty(cbCategory.Text))
             {
@@ -228,6 +251,68 @@ namespace BudgCalc.Presentation_Layer
                 MessageBox.Show("Please choose whether this earning or spending money.");
                 isValid = false;
             }
+
+
+            if (isValid)
+            {
+                Category cat = new Category();
+                if (!string.IsNullOrEmpty(tbBudgetID.Text))
+                {
+                    cat.CategoryID = int.Parse(tbBudgetID.Text);
+                }
+                    
+                cat.CategoryName = cbCategory.Text;
+                cat.Amount = int.Parse(tbAmount.Text);
+                cat.SourceID = int.Parse(lbBankID.Items[cbBank.SelectedIndex].ToString());
+                cat.Description = tbPurpose.Text;
+
+                // Put appropriate stored proc depending on whether new or updated customer.
+                string addQuery;
+                if (Global_Variable.budgetID == 0)
+                {
+                    addQuery = "sp_Categories_AddCategory";
+                }
+                else
+                {
+                    addQuery = "sp_Categories_UpdateCategory";
+                }
+                // prepare connection, open, prepare SqlCommand.
+                SqlConnection conn = ConnectionManager.DatabaseConnection();
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(addQuery, conn);
+                // Tell program to use stored procedures.
+                cmd.CommandType = CommandType.StoredProcedure;
+                // If updating a customer, add ID as a parametre.
+                if (Global_Variable.budgetID != 0)
+                {
+                    cmd.Parameters.AddWithValue("@CategoryID", cat.CategoryID);
+                }
+                // Add parametres.
+                cmd.Parameters.AddWithValue("@CategoryName", cat.CategoryName);
+                cmd.Parameters.AddWithValue("@AssignedAmount", cat.Amount);
+                cmd.Parameters.AddWithValue("@CategoryDescription", cat.Description);
+                cmd.Parameters.AddWithValue("@SourceID", cat.SourceID);
+
+                // If new customer, get the output.
+                //if (Global_Variable.budgetID == 0)
+                //{
+                    cmd.Parameters.AddWithValue("@NewCategoryID", SqlDbType.Int).Direction = ParameterDirection.Output;
+                //}
+                // Use transactions to call database.
+                cmd.Transaction = conn.BeginTransaction();
+                cmd.ExecuteNonQuery();
+                cmd.Transaction.Commit();
+                // Close connection.
+                conn.Close();
+                // Close window.
+                this.Close();
+
+
+
+            }
+
+
+
         }
     }
 }
