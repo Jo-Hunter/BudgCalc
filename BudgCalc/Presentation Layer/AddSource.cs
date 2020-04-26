@@ -52,11 +52,8 @@ namespace BudgCalc.Presentation_Layer
         // Add/Update button
         private void button1_Click(object sender, EventArgs e)
         {
-            // TODO 
-            // validate first
-            // create sps
-            // send data
-
+            // updating a source first checks if it has been used and if so,
+            // creates a new entry and adds a leave date to the old version.
             
             if (string.IsNullOrEmpty(cbBank.Text))
             {
@@ -99,11 +96,10 @@ namespace BudgCalc.Presentation_Layer
                 //Add parametres.
                 cmd.Parameters.AddWithValue("@SourceName", sour.SourceName);
 
-                // If new customer, get the output.
-                if(Global_Variable.sourceID == 0)
-                {
-                    cmd.Parameters.AddWithValue("@NewSourceID", SqlDbType.Int).Direction = ParameterDirection.Output;
-                }
+                // Output exists for both add and update now
+                
+                cmd.Parameters.AddWithValue("@NewSourceID", SqlDbType.Int).Direction = ParameterDirection.Output;
+                
                 // Use transactions to call database.
                 cmd.Transaction = conn.BeginTransaction();
                 cmd.ExecuteNonQuery();
