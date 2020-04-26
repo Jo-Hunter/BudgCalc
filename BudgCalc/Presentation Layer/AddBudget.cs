@@ -26,7 +26,7 @@ namespace BudgCalc.Presentation_Layer
 
         private void frmAddBudget_Load(object sender, EventArgs e)
         {
-            // klhsihl
+          
 
             // Fill Combo boxes with possible data for the user to select.
             FillComboBoxes();
@@ -201,27 +201,8 @@ namespace BudgCalc.Presentation_Layer
 
             // NOTE: the sp for update checks to see if it has been used and if so,
             // automatically creates a new entry instead. 
-            // However, I haven't made it enter a leavedate yet, next task.
-            // Git failed with a fatal error.
-            //fatal: Unable to create 'C:/Users/joz/documents/visual studio 2017/Projects/BudgCalc/.git/index.lock': File exists.
-
-            //Another git process seems to be running in this repository, e.g.
-            //an editor opened by 'git commit'.Please make sure all processes
-            //are terminated then try again.If it still fails, a git process
-            //may have crashed in this repository earlier:
-            //remove the file manually to continue.
-
-            // addiotnal error when I changed it file and tried again
-            //Git failed with a fatal error.
-//warning: LF will be replaced by CRLF in BudgCalc / Presentation Layer / AddBudget.cs.
-//The file will have its original line endings in your working directory.
-//fatal: Unable to create 'C:/Users/joz/documents/visual studio 2017/Projects/BudgCalc/.git/index.lock': File exists.
-
-//Another git process seems to be running in this repository, e.g.
-//an editor opened by 'git commit'.Please make sure all processes
-//are terminated then try again.If it still fails, a git process
-//may have crashed in this repository earlier:
-//remove the file manually to continue.
+            
+            
 
             bool isValid = true;
 

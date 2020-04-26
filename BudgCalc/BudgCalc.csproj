@@ -71,6 +71,12 @@
     <Compile Include="Presentation Layer\BudgetCategories.Designer.cs">
       <DependentUpon>BudgetCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation Layer\DeleteCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation Layer\DeleteCategory.Designer.cs">
+      <DependentUpon>DeleteCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation Layer\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation Layer\BudgetCategories.resx">
       <DependentUpon>BudgetCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation Layer\DeleteCategory.resx">
+      <DependentUpon>DeleteCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation Layer\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
