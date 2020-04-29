@@ -87,6 +87,7 @@
             this.btnSourceDelete.TabIndex = 3;
             this.btnSourceDelete.Text = "Delete";
             this.btnSourceDelete.UseVisualStyleBackColor = true;
+            this.btnSourceDelete.Click += new System.EventHandler(this.btnSourceDelete_Click);
             // 
             // btnSourceCancel
             // 

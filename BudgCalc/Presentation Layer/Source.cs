@@ -118,5 +118,10 @@ namespace BudgCalc.Presentation_Layer
 
             }
         }
+
+        private void btnSourceDelete_Click(object sender, EventArgs e)
+        {
+            // lets delete!
+        }
     }
 }

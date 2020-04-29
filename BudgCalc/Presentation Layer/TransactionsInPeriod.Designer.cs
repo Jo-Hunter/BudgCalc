@@ -113,6 +113,7 @@
             this.btnDeleteTransaction.TabIndex = 3;
             this.btnDeleteTransaction.Text = "Delete";
             this.btnDeleteTransaction.UseVisualStyleBackColor = true;
+            this.btnDeleteTransaction.Click += new System.EventHandler(this.btnDeleteTransaction_Click);
             // 
             // btnSearchTrans
             // 

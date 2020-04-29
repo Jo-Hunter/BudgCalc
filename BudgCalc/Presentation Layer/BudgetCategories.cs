@@ -104,7 +104,7 @@ namespace BudgCalc.Presentation_Layer
             }
 
             frmAddBudget ab = new frmAddBudget();
-            ab.Show();
+            ab.ShowDialog();
 
             lvCategories.Items.Clear();
             DisplayBudget();

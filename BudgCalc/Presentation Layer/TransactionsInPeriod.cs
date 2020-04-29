@@ -158,5 +158,60 @@ namespace BudgCalc.Presentation_Layer
                 
             }
         }
+
+        private void btnDeleteTransaction_Click(object sender, EventArgs e)
+        {
+            if (lvTransactions.SelectedItems.Count>0) // if something has been selected
+            {
+                string select = lvTransactions.SelectedItems[0].SubItems[0].Text;
+
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this transaction #" + select + "?", "Delete Transaction", MessageBoxButtons.YesNo);
+
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    
+                    Transaction trans = new Transaction();
+                    trans.TransactionID = int.Parse(select);
+
+
+                    //// Put appropriate stored proc
+                    string deleteQuery;
+
+                    deleteQuery = "sp_Transactions_RemoveTransaction";
+
+                    // prepare connection, open, prepare SqlCommand.
+                    SqlConnection conn = ConnectionManager.DatabaseConnection();
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(deleteQuery, conn);
+                    // Tell program to use stored procedures.
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    // Add parameters
+                    cmd.Parameters.AddWithValue("@TransactionID", trans.TransactionID);
+
+                    // Use transactions to call database.
+                    cmd.Transaction = conn.BeginTransaction();
+                    cmd.ExecuteNonQuery();
+                    cmd.Transaction.Commit();
+ 
+                    // Close connection.
+                    conn.Close();
+                    // Close window.
+                    this.Close();
+
+                    MessageBox.Show("Transaction #" + select + " has been deleted.");
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    // do nothing
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to delete");
+            }
+        
+        }
     }
 }
