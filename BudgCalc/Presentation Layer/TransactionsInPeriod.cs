@@ -161,6 +161,11 @@ namespace BudgCalc.Presentation_Layer
 
         private void btnDeleteTransaction_Click(object sender, EventArgs e)
         {
+
+            // Check if something has been selected
+            // ask to make sure they want to delete
+            // delete transaction
+
             if (lvTransactions.SelectedItems.Count>0) // if something has been selected
             {
                 string select = lvTransactions.SelectedItems[0].SubItems[0].Text;

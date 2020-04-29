@@ -121,7 +121,78 @@ namespace BudgCalc.Presentation_Layer
 
         private void btnSourceDelete_Click(object sender, EventArgs e)
         {
-            // lets delete!
+            // ask if sure first
+            // if so, get the OUTPUT of the sp and let the user know
+            // if it has been deleted or archived
+
+
+
+
+            if (lvSource.SelectedItems.Count > 0)
+            {
+                string select = lvSource.SelectedItems[0].SubItems[0].Text;
+
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this item #" + select + "?", "Delete Source", MessageBoxButtons.YesNo);
+
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Category cat = new Category();
+                    cat.CategoryID = int.Parse(select);
+
+                    Source sou = new Source();
+                    sou.SourceID = int.Parse(select);
+
+
+                    //// Put appropriate stored proc
+                    string deleteQuery;
+
+                    deleteQuery = "sp_Sources_RemoveSource";
+
+                    // prepare connection, open, prepare SqlCommand.
+                    SqlConnection conn = ConnectionManager.DatabaseConnection();
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(deleteQuery, conn);
+                    // Tell program to use stored procedures.
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    // Add parameters
+                    cmd.Parameters.AddWithValue("@SourceID", sou.SourceID);
+
+
+                    // get the output.    
+                    cmd.Parameters.AddWithValue("@Deleted", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+
+                    // Use transactions to call database.
+                    cmd.Transaction = conn.BeginTransaction();
+                    cmd.ExecuteNonQuery();
+                    cmd.Transaction.Commit();
+
+                    string returnOutput = cmd.Parameters["@Deleted"].Value.ToString();
+                    // Close connection.
+                    conn.Close();
+                    // Close window.
+                    this.Close();
+
+                    if (int.Parse(returnOutput) == 0)
+                    {
+                        MessageBox.Show("This entry has previously been used. Therefore entry has been archived.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("This entry has been deleted.");
+                    }
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    // do nothing
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to delete");
+            }
         }
     }
 }
