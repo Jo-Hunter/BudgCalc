@@ -31,7 +31,7 @@ namespace BudgCalc.Presentation_Layer
 
         private void DisplaySource()
         {
-            string query = "SELECT * from Sources";
+            string query = "SELECT * from Sources WHERE LeaveDate IS NULL";
             // Init the connection.
             SqlConnection conn = ConnectionManager.DatabaseConnection();
 
@@ -52,12 +52,14 @@ namespace BudgCalc.Presentation_Layer
                     string name = sdr["SourceName"].ToString();
 
 
-
                     // Init and populate the Sources class
                     Source sou = new Source(id, name);
 
                     // Init the ListView by giving the PK.
                     ListViewItem lvi = new ListViewItem(sou.SourceID.ToString());
+
+                    
+                    
                     // Submit the information going in the other column/s.
                     lvi.SubItems.Add(sou.SourceName);
 
