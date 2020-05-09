@@ -250,6 +250,20 @@ namespace BudgCalc
         private void UpdatePeriod()
         {
 
+            // TODO should be able to choose a date.
+            // Imagine doing the budget, you wouldn't always be able to do it on the right day but
+            // usually budgets are weekly or fortnightly etc for comparison.
+            // OR should I allow th users to set a start date and timeframe?
+            // like the banks, scheduling auto payments
+            // eg fortnightly from 11/4/20
+            // now I'm thinking how it would work with the Periods table if it was set on auto.
+            // I suppose some kind of check on load, what is the date, get the last date, 
+            // add periods on load. 
+            // I don't think I can do away with the Periods table because
+            // I need to keep the functionality to change timeframes etc.
+            // or do I need to use this method at all, can't I just ues dates now?
+            // since I added dates in all the tables?
+            // Okay food for thought.
 
             int per = Global_Variable.currentPeriod;
             
